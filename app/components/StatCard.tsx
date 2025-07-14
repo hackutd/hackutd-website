@@ -3,18 +3,20 @@ type StatCardProps = {
   title: string;
   subtitle: string;
   body: string;
+  align?: "left" | "right";
 };
 
 export default function StatCard({
     title,
     subtitle,
     body,
+    align,
     }: StatCardProps) {
     return(
         <div
             className="
             flex flex-col items-start justify-center
-            w-[30vw] h-[35vh]
+            w-[28vw] h-[35vh]
             rounded-[1rem]
             bg-[rgba(193,193,255,0.20)]
             bg-blend-plus-lighter
