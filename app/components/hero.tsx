@@ -2,7 +2,10 @@
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-[#0f0029] via-[#1f0140] to-[#fd9453] text-white overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-[#050014] via-[#04002A] to-[#050032] text-white overflow-hidden"
+      style={{
+        background: ``
+      }}>
       <div className="z-10 relative flex flex-col items-center justify-center text-center h-[70vh] px-4">
         <div className="flex items-center gap-4">
           <div className="text-4xl sm:text-5xl font-extrabold flex items-center gap-4">
@@ -22,6 +25,15 @@ export default function Hero() {
         <p className="mt-4 text-lg sm:text-xl font-light">
           North America's Largest 24-hour Hackathon
         </p>
+      </div>
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[120vw] h-[50vh] z-0">
+        <div 
+          className="w-full h-full"
+          style={{
+            background: 'radial-gradient(ellipse 60% 100% at center bottom,rgba(255, 150, 37, 0.6) 30%,rgba(189, 17, 146, 0.53) 80%, transparent 100%)',
+            pointerEvents: 'none'
+          }}
+        />
       </div>
     </section>
   );
