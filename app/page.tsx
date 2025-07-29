@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Hero from "./components/hero";
 import Stats from "./components/stats";
+import Intro from "./components/intro";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="w-4/5 mx-auto">
         <Hero />
         <Stats />
+        <Intro />
       </div>
     </main>
   );
