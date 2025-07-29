@@ -15,7 +15,8 @@ export default function OpenSource() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-pink-200 py-16 px-8">
+    // <section className="relative min-h-screen bg-gradient-to-br from-[#DDDDDD] from-[50%] via-[#DDDDDD] via-[82%] via-[#F75371] via-[94%] to-[#D15CD8] to-[100%] py-16 px-8">
+    <section className="relative min-h-screen bg-gradient-to-br from-[#D15CD8] via-[#F75371] via-[#DDDDDD] to-[#DDDDDD] py-16 px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
