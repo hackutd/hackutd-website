@@ -2,6 +2,7 @@ import Image from "next/image";
 import Hero from "./components/hero";
 import Stats from "./components/stats";
 import Intro from "./components/intro";
+import OpenSource from "./components/opensource";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <Hero />
         <Stats />
         <Intro />
+        <OpenSource />
       </div>
     </main>
   );
