@@ -9,8 +9,9 @@ export default function Intro() {
         <div className="space-y-8">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-purple-400">Who we</span>{' '}
-              <span className="text-orange-400">are</span>
+              <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                Who we are
+              </span>
             </h2>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
@@ -45,7 +46,9 @@ export default function Intro() {
         <div className="space-y-8 order-1 lg:order-2">
           <div className="text-right">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-purple-400">Our vision</span>
+              <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                Our Vision
+              </span>
             </h2>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
