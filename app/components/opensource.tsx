@@ -1,4 +1,6 @@
 "use client";
+import hackScreenshot from '@/public/hackScreenshot.png';
+import Image from 'next/image';
 
 export default function OpenSource() {
   const projects = [
@@ -28,14 +30,21 @@ export default function OpenSource() {
         </div>
 
         {/* Projects */}
-        <div className="grid grid-cols-2 gap-8">
+        <div className="flex flex-row justify-center gap-8">
           {projects.map((project, index) => (
             <div 
               key={index}
               className="bg-black rounded-2xl overflow-hidden h-[60vh] w-[37vw] hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center justify-center"
             >
               {/* Project Image */}
-              <div className="h-[40vh] w-[35vw] bg-gray-600 relative">
+              <div className="h-[40vh] w-[32vw] relative">
+                <Image
+                  src={hackScreenshot}
+                  alt={`${project.title} Screenshot`}
+                  className="rounded-t-2xl w-full h-full object-cover"
+                  width={800}
+                  height={400}
+                />
               </div>
 
               {/* Project Description */}
