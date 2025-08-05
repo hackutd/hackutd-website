@@ -25,34 +25,47 @@ export default function OpenSource() {
             Our <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">open source</span> projects
           </h2>
           <p className="text-gray-800 text-lg mb-6">
-            As active participants in the hackathon community, we blababla blab alb la lal blblababla blab alb la lal blblabala blab alb la lal
+            As active participants in the hackathon community, we’ve built open-source tools to support and empower other organizers.
           </p>
         </div>
 
         {/* Projects */}
-        <div className="flex flex-row justify-center gap-8">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 px-4">
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="bg-black rounded-2xl overflow-hidden h-[60vh] w-[37vw] hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center justify-center"
+              className="
+                bg-black rounded-2xl overflow-hidden
+                h-auto lg:h-[60vh]
+                w-full sm:w-[90vw] md:w-[70vw] lg:w-[40vw]
+                hover:shadow-2xl transition-shadow duration-300
+                flex flex-col items-center justify-center
+                p-4 lg:p-2"
             >
               {/* Project Image */}
-              <div className="h-[40vh] w-[32vw] relative">
+              <div className="
+                w-full
+                h-[140px] 
+                sm:h-[160px] 
+                md:h-[200px] 
+                lg:h-[40vh] lg:w-[30vw] 
+                relative"
+              >
                 <Image
                   src={hackScreenshot}
                   alt={`${project.title} Screenshot`}
-                  className="rounded-t-2xl w-full h-full object-cover"
+                  className="rounded-2xl w-full h-full object-cover"
                   width={800}
                   height={400}
                 />
               </div>
 
               {/* Project Description */}
-              <div className="p-6 h-[17vh]">
-                <h3 className="text-3xl font-bold text-white mb-2">
+              <div className="p-6 h-auto lg:h-[17vh]">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 text-center lg:text-left">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed mb-8">
+                <p className="text-sm md:text-base text-gray-300 leading-relaxed text-center lg:text-left">
                   {project.description}
                 </p>
               </div>
