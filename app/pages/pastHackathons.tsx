@@ -30,7 +30,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2024}
                 alt="Hack Badge 2024"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2024</p>
@@ -42,7 +42,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2023}
                 alt="Hack Badge 2023"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2023</p>
@@ -53,7 +53,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2022}
                 alt="Hack Badge 2022"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2022</p>
@@ -64,7 +64,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2021}
                 alt="Hack Badge 2021"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2021</p>
@@ -75,7 +75,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2020}
                 alt="Hack Badge 2020"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2020</p>
@@ -90,7 +90,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2024}
                 alt="Hack Badge 2024"
-                className="w-28 h-28 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
             </Link>
             <p className="mt-4 mb-8 md:mb-0">Hackutd 2024</p>
@@ -101,7 +101,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2023}
                 alt="Hack Badge 2023"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2023</p>
@@ -112,7 +112,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2022}
                 alt="Hack Badge 2022"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2022</p>
@@ -123,7 +123,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2021}
                 alt="Hack Badge 2021"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2021</p>
@@ -134,7 +134,7 @@ const pastHackathons = () => {
               <Image
                 src={Hack2020}
                 alt="Hack Badge 2020"
-                className="w-28 h-28 mx-2 transition-transform duration-200 hover:scale-110 cursor-pointer"
+                className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
               />
               </Link>
               <p className="mt-4">Hackutd 2020</p>
