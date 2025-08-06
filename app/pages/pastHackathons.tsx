@@ -63,7 +63,7 @@ const pastHackathons = () => {
                 <Image
                   src={hackathon.src}
                   alt={hackathon.alt}
-                  className="w-28 h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
+                  className="w-fit h-28 mx-2 transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer"
                 />
               </Link>
               <p className="mt-4">{hackathon.label}</p>
