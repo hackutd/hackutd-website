@@ -45,7 +45,7 @@ export default function OpenSource() {
                 bg-black rounded-2xl overflow-hidden
                 h-auto lg:h-[60vh]
                 w-full sm:w-[90vw] md:w-[70vw] lg:w-[40vw]
-                transition-all duration-300 hover:scale-102 hover:shadow-2xl
+                transition-all duration-300 hover:scale-102 hover:shadow-[0_25px_50px_-12px_rgba(59,130,246,0.5)]
                 flex flex-col items-center justify-center
                 p-4 lg:p-2"
             >
