@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Hero from "./components/hero";
-import Footer from "./components/footer";
+import Hero from "./pages/hero";
+import Footer from "./pages/footer";
 
 export default function Home() {
   return (
