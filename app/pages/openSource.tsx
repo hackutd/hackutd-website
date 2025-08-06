@@ -1,6 +1,6 @@
 "use client";
 import hackScreenshot from '@/public/hackScreenshot.png';
-import juryScreenshot from '@/public/juryScreenshot.jpg';
+import juryScreenshot from '@/public/juryScreenshot.png';
 import Image from 'next/image';
 
 export default function OpenSource() {
@@ -8,12 +8,12 @@ export default function OpenSource() {
     {
       title: "Hackportal",
       description: "A pre-built portal template made by HackUTD Developers, so you have one less thing to worry about. Used in HackTX, HACKUTA, HackUTD",
-      image: ""
+      image: hackScreenshot
     },
     {
       title: "Jury",
       description: "A pre-built portal template made by HackUTD Developers, so you have one less thing to worry about. Used in HackTX, HACKUTA, HackUTD",
-      image: ""
+      image: juryScreenshot
     }
   ];
 
@@ -53,7 +53,7 @@ export default function OpenSource() {
                 relative"
               >
                 <Image
-                  src={hackScreenshot}
+                  src={project.image}
                   alt={`${project.title} Screenshot`}
                   className="rounded-2xl w-full h-full object-cover"
                   width={800}
