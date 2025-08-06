@@ -1,5 +1,6 @@
 "use client";
 import hackScreenshot from '@/public/hackScreenshot.png';
+import juryScreenshot from '@/public/juryScreenshot.jpg';
 import Image from 'next/image';
 
 export default function OpenSource() {
