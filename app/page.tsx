@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Hero from "./pages/hero";
 import Intro from "./pages/intro";
-import OpenSource from "./pages/opensource";
+import OpenSource from "./pages/openSource";
 import PastHackathons from "./pages/pastHackathons";
 
 export default function Home() {
