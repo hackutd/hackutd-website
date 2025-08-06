@@ -56,13 +56,13 @@ export default function OpenSource() {
                   h-[140px] 
                   sm:h-[160px] 
                   md:h-[200px] 
-                  lg:h-[40vh] lg:w-[30vw] 
+                  lg:h-[40vh] lg:w-[34vw] 
                   relative"
                 >
                   <Image
                     src={project.image}
                     alt={`${project.title} Screenshot`}
-                    className="rounded-2xl w-full h-full object-cover"
+                    className="rounded-md w-full h-full object-cover"
                     width={800}
                     height={400}
                   />
@@ -78,9 +78,7 @@ export default function OpenSource() {
                   {project.description}
                 </p>
               </div>
-            </div>
-
-            
+            </div>            
           ))}
         </div>
       </div>
