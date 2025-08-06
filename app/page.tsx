@@ -2,7 +2,7 @@ import Image from "next/image";
 import Hero from "./components/hero";
 import Stats from "./components/stats";
 import Intro from "./components/intro";
-import OpenSource from "./components/opensource";
+import OpenSource from "./components/openSource";
 
 export default function Home() {
   return (
