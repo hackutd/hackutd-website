@@ -136,7 +136,7 @@ const Members: React.FC = () => {
         alt={member.fullName}
         fill
         className="object-cover"
-        sizes="64px"
+        sizes="120px"
         onError={() => setImageError(true)}
       />
     );
@@ -172,90 +172,99 @@ const Members: React.FC = () => {
   }
 
   return (
-    <div className="w-full py-6">
-      {/* 60% Width Container - 20% margins on each side */}
-      <div className="w-[60%] mx-auto">
+    <div className="w-full py-6 bg-gradient-to-br from-gray-900 via-purple-900 to-black min-h-screen">
+      {/* 80% Width Container */}
+      <div className="w-[80%] mx-auto">
         
-        {/* Compact Header */}
-        <div className="text-center mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 bg-clip-text text-transparent mb-2">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent mb-3">
             HackUTD Team
           </h1>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-300">
             {teamMembers.length} members across {Object.keys(teamGroups).length} teams
           </p>
         </div>
-
-        {/* Teams Display - Free Movement Grid */}
-        <div className="max-h-[70vh] overflow-auto p-4 scrollbar-hide" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+        
+        {/* Team Member HoneyComb */}
+        <div className="max-h-[80vh] overflow-auto p-6 scrollbar-hide" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
           <style jsx>{`
             div::-webkit-scrollbar {
               display: none;
             }
           `}</style>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-            {teamMembers.map((member: TeamMember) => (
+          <div className="flex flex-wrap justify-center gap-2">
+            {teamMembers.map((member: TeamMember, index: number) => (
               <a
                 key={member.id}
                 href={member.linkedinUrl || '#'}
                 target={member.linkedinUrl ? "_blank" : "_self"}
                 rel="noopener noreferrer"
-                className="flex-shrink-0 group block cursor-pointer"
+                className="group block cursor-pointer relative"
                 style={{ pointerEvents: 'auto' }}
               >
-                    {/* Card Container - Octagon Layout */}
+                {/* Hexagonal */}
+                <div 
+                  className="relative w-32 h-32 m-1 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:z-10"
+                  style={{
+                    clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                  }}
+                >
+                  {/* Gradient Border */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 p-1"
+                    style={{
+                      clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                    }}
+                  >
                     <div 
-                      className="relative w-48 h-20 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 p-0.5"
+                      className="w-full h-full bg-gray-800 relative overflow-hidden"
                       style={{
-                        clipPath: 'polygon(8% 0%, 92% 0%, 100% 30%, 100% 70%, 92% 100%, 8% 100%, 0% 70%, 0% 30%)'
+                        clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
                       }}
                     >
+                      {/* Profile */}
+                      <div className="absolute inset-0">
+                        <MemberImage member={member} />
+                      </div>
                       
-                      {/* Inner Card */}
-                      <div 
-                        className="w-full h-full bg-white/10 backdrop-blur-sm flex items-center overflow-hidden"
-                        style={{
-                          clipPath: 'polygon(8% 0%, 92% 0%, 100% 30%, 100% 70%, 92% 100%, 8% 100%, 0% 70%, 0% 30%)'
-                        }}
-                      >
+                      {/* Hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/95 via-pink-600/95 to-orange-600/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-3 text-center">
+                        {/* Name */}
+                        <h3 
+                          className="text-white font-bold leading-tight mb-1"
+                          style={{
+                            fontSize: member.fullName.length > 18 ? '0.6rem' : 
+                                     member.fullName.length > 14 ? '0.7rem' : '0.8rem'
+                          }}
+                        >
+                          {member.fullName}
+                        </h3>
                         
-                        {/* Hexagon Profile Image - Left Side */}
-                        <div className="relative ml-2">
-                          <div 
-                            className="w-16 h-16 overflow-hidden relative"
-                            style={{
-                              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
-                            }}
-                          >
-                            <MemberImage member={member} />
+                        {/* Team */}
+                        <p 
+                          className="text-white/90 leading-tight"
+                          style={{
+                            fontSize: member.team.length > 20 ? '0.5rem' : 
+                                     member.team.length > 15 ? '0.55rem' : '0.6rem'
+                          }}
+                        >
+                          {member.team}
+                        </p>
+                        
+                        {/* LinkedIn */}
+                        {member.linkedinUrl && (
+                          <div className="mt-1">
+                            <div className="w-4 h-4 bg-blue-500 rounded-sm flex items-center justify-center">
+                              <span className="text-white text-xs font-bold">in</span>
+                            </div>
                           </div>
-                        </div>
-                        
-                        {/* Text Content - Right Side */}
-                        <div className="flex-1 px-3 py-2">
-                          <h3 
-                            className="text-white font-bold leading-tight mb-1"
-                            style={{
-                              fontSize: member.fullName.length > 18 ? '0.7rem' : 
-                                       member.fullName.length > 14 ? '0.75rem' : '0.8rem'
-                            }}
-                          >
-                            {member.fullName}
-                          </h3>
-                          <p 
-                            className="text-white/90 leading-tight"
-                            style={{
-                              fontSize: member.team.length > 20 ? '0.55rem' : 
-                                       member.team.length > 15 ? '0.6rem' : '0.65rem'
-                            }}
-                          >
-                            {member.team}
-                          </p>
-                        </div>
-
+                        )}
                       </div>
                     </div>
-                </a>
+                  </div>
+                </div>
+              </a>
             ))}
           </div>
         </div>
