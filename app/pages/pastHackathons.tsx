@@ -56,7 +56,7 @@ const pastHackathons = () => {
         </h3>
         
         {/* Badges for past hackathons in desktop version */}
-        <div className="hidden lg:flex w-full max-w-7xl mx-auto flex-row items-center px-8 py-4 gap-32 mb-28">
+        <div className="hidden lg:flex w-full max-w-7xl mx-auto flex-row items-center justify-between px-8 py-4 mb-28">
           {hackathons.map((hackathon, index) => (
             <div key={index} className="font-DM-Sans text-center items-center flex flex-col">
               <Link href={hackathon.href} target="_blank" rel="noopener noreferrer">
