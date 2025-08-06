@@ -26,7 +26,7 @@ export default function Hero() {
           North America's Largest 24-hour Hackathon
         </p>
       </div>
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[120vw] h-[50vh] z-0">
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[120vw] h-[50vh] z-0 blur-4xl">
         <div 
           className="w-full h-full"
           style={{
