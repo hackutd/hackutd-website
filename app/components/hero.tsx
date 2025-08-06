@@ -26,11 +26,11 @@ export default function Hero() {
           North America's Largest 24-hour Hackathon
         </p>
       </div>
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[120vw] h-[50vh] z-0 blur-4xl">
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[120vw] h-[50vh] z-0">
         <div 
-          className="w-full h-full"
+          className="absolute inset-0 blur-3xl scale-150 opacity-70"
           style={{
-            background: 'radial-gradient(ellipse 60% 100% at center bottom,rgba(255, 150, 37, 0.6) 30%,rgba(189, 17, 146, 0.53) 80%, transparent 100%)',
+            background: 'radial-gradient(ellipse 50% 110% at center bottom, rgba(255, 177, 94, 1) 40%, rgba(242, 88, 204, 0.9) 70%, rgba(231, 105, 199, 0.4) 85%, transparent 100%)',
             pointerEvents: 'none'
           }}
         />
