@@ -1,16 +1,22 @@
 "use client";
+import hackScreenshot from '@/public/hackScreenshot.png';
+import juryScreenshot from '@/public/juryScreenshot.png';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function OpenSource() {
   const projects = [
     {
       title: "Hackportal",
       description: "A pre-built portal template made by HackUTD Developers, so you have one less thing to worry about. Used in HackTX, HACKUTA, HackUTD",
-      image: ""
+      image: hackScreenshot,
+      url: "https://hackportal.hackutd.co/"
     },
     {
       title: "Jury",
-      description: "A pre-built portal template made by HackUTD Developers, so you have one less thing to worry about. Used in HackTX, HACKUTA, HackUTD",
-      image: ""
+      description: "A pre-built judge management tool developed by HackUTD Developers, so running judging is one less thing to worry about. Used at HackUTD, HackTX, and HACKUTA.",
+      image: juryScreenshot,
+      url: "https://jury.mikz.dev/"
     }
   ];
 
@@ -24,31 +30,56 @@ export default function OpenSource() {
             Our <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">open source</span> projects
           </h2>
           <p className="text-gray-800 text-lg mb-6">
-            As active participants in the hackathon community, we blababla blab alb la lal blblababla blab alb la lal blblabala blab alb la lal
+            As active participants in the hackathon community, we’ve built open-source tools to support and empower other organizers.
+            <br/>
+             Click on the projects below to learn more!
           </p>
         </div>
 
         {/* Projects */}
-        <div className="grid grid-cols-2 gap-8">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 px-4">
           {projects.map((project, index) => (
+            
             <div 
               key={index}
-              className="bg-black rounded-2xl overflow-hidden h-[60vh] w-[37vw] hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center justify-center"
+              className="
+                bg-black rounded-2xl overflow-hidden
+                h-auto lg:h-[60vh]
+                w-full sm:w-[90vw] md:w-[70vw] lg:w-[40vw]
+                transition-all duration-300 hover:scale-102 hover:shadow-[0_25px_50px_-12px_rgba(59,130,246,0.5)]
+                flex flex-col items-center justify-center
+                p-4 lg:p-2"
             >
               {/* Project Image */}
-              <div className="h-[40vh] w-[35vw] bg-gray-600 relative">
-              </div>
+              <Link href={project.url} target="_blank" rel="noopener noreferrer">
+                <div className="
+                  w-full
+                  h-[140px] 
+                  sm:h-[160px] 
+                  md:h-[200px] 
+                  lg:h-[40vh] lg:w-[34vw] 
+                  relative"
+                >
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} Screenshot`}
+                    className="rounded-md w-full h-full object-cover"
+                    width={800}
+                    height={400}
+                  />
+                </div>
+              </Link>
 
               {/* Project Description */}
-              <div className="p-6 h-[17vh]">
-                <h3 className="text-3xl font-bold text-white mb-2">
+              <div className="p-6 h-auto lg:h-[17vh]">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 text-center lg:text-left">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed mb-8">
+                <p className="text-sm md:text-base text-gray-300 leading-relaxed text-center lg:text-left">
                   {project.description}
                 </p>
               </div>
-            </div>
+            </div>            
           ))}
         </div>
       </div>
