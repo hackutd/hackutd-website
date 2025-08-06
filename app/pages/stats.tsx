@@ -1,6 +1,6 @@
 "use client";
 
-import StatCard from "./StatCard";
+import StatCard from "../components/StatCard";
 
 export default function Stats() {
   return (

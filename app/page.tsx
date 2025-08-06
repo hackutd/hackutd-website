@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Hero from "./components/hero";
-import Stats from "./components/stats";
-import Intro from "./components/intro";
-import OpenSource from "./components/openSource";
+import Hero from "./pages/hero";
+import Stats from "./pages/stats";
+import Intro from "./pages/intro";
+import OpenSource from "./pages/openSource";
 
 export default function Home() {
   return (
