@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react'
-import Hack2020 from '@/public/Hack2020.png'
-import Hack2021 from '@/public/Hack2021.png'
-import Hack2022 from '@/public/Hack2022.png'
-import Hack2023 from '@/public/Hack2023.png'
-import Hack2024 from '@/public/Hack2024.png'
+import Hack2020 from '@/public/Hack2020.svg'
+import Hack2021 from '@/public/Hack2021.svg'
+import Hack2022 from '@/public/Hack2022.svg'
+import Hack2023 from '@/public/Hack2023.svg'
+import Hack2024 from '@/public/Hack2024.svg'
 import Image from 'next/image';
 import Link from 'next/link';
 
