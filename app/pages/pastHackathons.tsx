@@ -15,31 +15,31 @@ const pastHackathons = () => {
       href: "https://ripple.hackutd.co/",
       src: Hack2024,
       alt: "Hack Badge 2024",
-      label: "Hackutd 2024"
+      label: "HackUTD 2024"
     },
     {
       href: "https://x.hackutd.co/",
       src: Hack2023,
       alt: "Hack Badge 2023",
-      label: "Hackutd 2023"
+      label: "HackUTD 2023"
     },
     {
       href: "https://ix.hackutd.co/",
       src: Hack2022,
       alt: "Hack Badge 2022",
-      label: "Hackutd 2022"
+      label: "HackUTD 2022"
     },
     {
       href: "https://prod.hackutd.co/",
       src: Hack2021,
       alt: "Hack Badge 2021",
-      label: "Hackutd 2021"
+      label: "HackUTD 2021"
     },
     {
       href: "https://vii.hackutd.co/",
       src: Hack2020,
       alt: "Hack Badge 2020",
-      label: "Hackutd 2020"
+      label: "HackUTD 2020"
     }
   ];
 
@@ -49,7 +49,7 @@ const pastHackathons = () => {
           className="font-inter text-[67px] text-center font-bold bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent"
           style={{ backgroundImage: 'linear-gradient(to bottom right, #FF56D6 0%, #FF7AA2 35%, #FF9167 70%)' }}
         >
-          uh Oh how far we've come...
+          Oh how far we've come...
         </h1>
         <h3 className = "text-center mb-4">
           Hover over a badge to checkout past hackathons!
