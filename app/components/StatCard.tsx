@@ -16,7 +16,6 @@ export default function StatCard({
   align = "left",
 }: StatCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
 
   const getAlignmentClasses = () => {
     switch (align) {
@@ -27,11 +26,6 @@ export default function StatCard({
       default:
         return "items-start text-left";
     }
-  };
-
-  const handleClick = () => {
-    setIsClicked(true);
-    setTimeout(() => setIsClicked(false), 300);
   };
 
   return (
@@ -48,17 +42,15 @@ export default function StatCard({
         p-10
         border border-[rgba(255,255,255,0.1)]
         transition-all duration-500 ease-out
-        transform hover:scale-105 hover:rotate-1
+        transform hover:scale-105
         hover:shadow-[-15px_-15px_50px_-10px_rgba(0,0,0,0.25),-2px_-2px_15px_-8px_rgba(0,0,0,0.15),2px_2px_20px_3px_rgba(193,193,255,0.2)_inset,1.5px_1.5px_30px_-2px_rgba(221,200,255,0.3)_inset]
         hover:border-[rgba(255,255,255,0.2)]
         cursor-pointer
         group
         ${getAlignmentClasses()}
-        ${isClicked ? 'scale-95' : ''}
       `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
     >
       <span 
         className={`
@@ -88,7 +80,6 @@ export default function StatCard({
         {body}
       </span>
       
-      {/* Animated glow effect on hover */}
       <div 
         className={`
           absolute inset-0 rounded-[1rem] opacity-0

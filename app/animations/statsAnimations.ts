@@ -44,17 +44,7 @@ export const initStatsAnimations = (
   });
 
 
-  cards.forEach((card, index) => {
-    gsap.to(card, {
-      y: -15,
-      rotationY: 2,
-      duration: 3 + index * 0.3,
-      ease: "power2.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: index * 0.5,
-    });
-  });
+
 
 
   cards.forEach((card, index) => {
@@ -137,16 +127,15 @@ export const initStatsAnimations = (
       const maxDistance = Math.sqrt(rect.width * rect.width + rect.height * rect.height) / 2;
       const strength = Math.max(0, 1 - distance / maxDistance);
       
-      
-      const rotateX = (y / rect.height) * strength * 8;
-      const rotateY = -(x / rect.width) * strength * 8;
+      const rotateX = (y / rect.height) * strength * 2;
+      const rotateY = -(x / rect.width) * strength * 2;
       
       gsap.to(card, {
         rotationX: rotateX,
         rotationY: rotateY,
-        scale: 1 + strength * 0.03,
-        duration: 0.3,
-        ease: "power2.out",
+        scale: 1 + strength * 0.01, 
+        duration: 0.8, 
+        ease: "power1.out", 
       });
     };
 
@@ -172,8 +161,8 @@ export const initStatsAnimations = (
         rotationX: 0,
         rotationY: 0,
         scale: 1,
-        duration: 0.5,
-        ease: "elastic.out(1, 0.3)",
+        duration: 1.2, 
+        ease: "power2.out", 
       });
 
       
@@ -181,7 +170,7 @@ export const initStatsAnimations = (
       gsap.to(particles, {
         opacity: 0.3,
         scale: 1,
-        duration: 0.3,
+        duration: 0.5, 
       });
     };
 
@@ -225,15 +214,30 @@ export const initStatsAnimations = (
     },
   });
 
-  
+ 
   cards.forEach((card, index) => {
     gsap.to(card, {
-      y: -10,
-      duration: 2 + index * 0.2,
-      ease: "power2.inOut",
+      y: -3, 
+      duration: 4 + index * 0.5, 
+      ease: "power1.inOut", 
       yoyo: true,
       repeat: -1,
-      delay: index * 0.3,
+      delay: index * 0.8, 
+    });
+  });
+
+
+  const timelinePhotos = document.querySelectorAll('.timeline-photo');
+  timelinePhotos.forEach((photo, index) => {
+    gsap.to(photo, {
+      y: -100 + (index * 50),
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
     });
   });
 
