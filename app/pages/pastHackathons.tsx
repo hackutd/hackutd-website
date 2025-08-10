@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import Hack2020 from '@/public/Hack2020.svg';
 import Hack2021 from '@/public/Hack2021.svg';
