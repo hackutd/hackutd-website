@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
-// Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -33,13 +33,12 @@ export default function Intro() {
       magneticElements: magneticElements.length
     });
 
-    // Initial state - hide all elements
     gsap.set([titles, texts, images], {
       opacity: 0,
       y: 50,
     });
 
-    // Set initial random text for scramble effect
+    
     const textElements = document.querySelectorAll('[id*="-text-"], [id*="-title"]');
     textElements.forEach((element) => {
       const actualText = element.textContent || '';
@@ -47,7 +46,7 @@ export default function Intro() {
       element.textContent = randomText;
     });
 
-    // Animate top row
+
     const topRowTl = gsap.timeline({
       scrollTrigger: {
         trigger: topRowRef.current,
@@ -78,7 +77,7 @@ export default function Intro() {
         ease: "power3.out",
       }, "-=0.6");
 
-    // Animate bottom row
+    
     const bottomRowTl = gsap.timeline({
       scrollTrigger: {
         trigger: bottomRowRef.current,
@@ -109,19 +108,9 @@ export default function Intro() {
         ease: "power2.out",
       }, "-=0.4");
 
-    // Add subtle floating animation to images
-    images.forEach((image, index) => {
-      gsap.to(image, {
-        y: -15,
-        duration: 3 + index * 0.5,
-        ease: "power2.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: index * 0.3,
-      });
-    });
 
-    // Add text reveal effect for titles
+
+    
     titles.forEach((title) => {
       const chars = title.textContent?.split('') || [];
       title.innerHTML = chars.map(char => 
@@ -145,8 +134,16 @@ export default function Intro() {
       });
     });
 
-    // Magnetic hover effect
+    
     magneticElements.forEach((element) => {
+     
+      const hasTextContent = element.textContent && element.textContent.trim().length > 0;
+      const isTextContainer = element.classList.contains('text-left') || element.classList.contains('text-right');
+      
+      if (!hasTextContent && !isTextContainer) {
+        return; 
+      }
+      
       const handleMouseMove = (e: MouseEvent) => {
         const rect = element.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
@@ -240,23 +237,23 @@ export default function Intro() {
   const handleScramble = (elementId: string, actualText: string) => {
     const element = document.getElementById(elementId);
     if (element) {
-      // If text is already revealed, don't do anything
+     
       if (revealedTexts.has(elementId)) {
         return;
       }
       
       if (isHovered === elementId) {
-        // Don't scramble back - keep the revealed text
+        
         setIsHovered(null);
       } else {
-        // Scramble to actual text
+        
         scrambleText('', actualText, element);
         setIsHovered(elementId);
         
-        // Mark this text as revealed after animation completes
+        
         setTimeout(() => {
           setRevealedTexts(new Set([...revealedTexts, elementId]));
-        }, actualText.length * 15); // Approximate time for animation to complete
+        }, actualText.length * 15); 
       }
     }
   };
@@ -303,14 +300,22 @@ export default function Intro() {
         </div>
 
         <div className="flex items-center order-2">
-          <div ref={(el) => { addImageRef(el); addMagneticRef(el); }} className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg h-[40vh] w-full shadow-2xl cursor-pointer"></div>
+          <div ref={addImageRef} className="relative rounded-lg h-[40vh] w-full shadow-2xl overflow-hidden">
+            <Image
+              src="/Team.png"
+              alt="HackUTD Team"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </div>
 
       <div ref={bottomRowRef} className="grid grid-cols-2 gap-16">
         
         <div className="flex items-center order-1">
-          <div ref={(el) => { addImageRef(el); addMagneticRef(el); }} className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg h-[40vh] w-full shadow-2xl cursor-pointer"></div>
+          <div ref={addImageRef} className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg h-[40vh] w-full shadow-2xl"></div>
         </div>
 
         <div ref={addMagneticRef} className="order-2 text-right cursor-pointer">

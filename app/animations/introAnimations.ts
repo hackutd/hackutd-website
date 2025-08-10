@@ -1,12 +1,12 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register ScrollTrigger plugin
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Text scramble effect
+
 const scrambleText = (randomText: string, actualText: string, element: HTMLElement) => {
   const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?~`';
   let iterations = 0;
@@ -43,13 +43,13 @@ export const initIntroAnimations = (
   isHovered: string | null,
   setIsHovered: (id: string | null) => void
 ) => {
-  // Get actual DOM elements
+ 
   const titles = titleRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
   const texts = textRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
   const images = imageRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
   const magneticElements = magneticRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
 
-  // Check if we have elements to animate
+  
   console.log('Animation elements found:', {
     titles: titles.length,
     texts: texts.length,
@@ -62,13 +62,13 @@ export const initIntroAnimations = (
     return;
   }
 
-  // Initial state - hide all elements
+
   gsap.set([titles, texts, images], {
     opacity: 0,
     y: 50,
   });
 
-  // Set initial random text for scramble effect
+  
   const textElements = document.querySelectorAll('[id*="-text-"], [id*="-title"]');
   textElements.forEach((element) => {
     const actualText = element.textContent || '';
@@ -76,7 +76,7 @@ export const initIntroAnimations = (
     element.textContent = randomText;
   });
 
-  // Animate top row
+  
   const topRowTl = gsap.timeline({
     scrollTrigger: {
       trigger: topRowRef.current,
@@ -107,7 +107,7 @@ export const initIntroAnimations = (
       ease: "power3.out",
     }, "-=0.6");
 
-  // Animate bottom row
+  
   const bottomRowTl = gsap.timeline({
     scrollTrigger: {
       trigger: bottomRowRef.current,
@@ -138,19 +138,9 @@ export const initIntroAnimations = (
       ease: "power2.out",
     }, "-=0.4");
 
-  // Add subtle floating animation to images
-  images.forEach((image, index) => {
-    gsap.to(image, {
-      y: -15,
-      duration: 3 + index * 0.5,
-      ease: "power2.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: index * 0.3,
-    });
-  });
 
-  // Add text reveal effect for titles
+
+
   titles.forEach((title) => {
     const chars = title.textContent?.split('') || [];
     title.innerHTML = chars.map(char => 
@@ -174,7 +164,7 @@ export const initIntroAnimations = (
     });
   });
 
-  // Magnetic hover effect
+  
   magneticElements.forEach((element) => {
     const handleMouseMove = (e: MouseEvent) => {
       const rect = element.getBoundingClientRect();
@@ -210,14 +200,14 @@ export const initIntroAnimations = (
     element.addEventListener('mousemove', handleMouseMove);
     element.addEventListener('mouseleave', handleMouseLeave);
 
-    // Cleanup event listeners
+  
     return () => {
       element.removeEventListener('mousemove', handleMouseMove);
       element.removeEventListener('mouseleave', handleMouseLeave);
     };
   });
 
-  // Cleanup function
+  
   return () => {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   };
@@ -233,23 +223,23 @@ export const handleTextScramble = (
 ) => {
   const element = document.getElementById(elementId);
   if (element) {
-    // If text is already revealed, don't do anything
+    
     if (revealedTexts.has(elementId)) {
       return;
     }
     
     if (isHovered === elementId) {
-      // Don't scramble back - keep the revealed text
+ 
       setIsHovered(null);
     } else {
-      // Scramble to actual text
+     
       scrambleText('', actualText, element);
       setIsHovered(elementId);
       
-      // Mark this text as revealed after animation completes
+    
       setTimeout(() => {
         setRevealedTexts(new Set([...revealedTexts, elementId]));
-      }, actualText.length * 15); // Approximate time for animation to complete
+      }, actualText.length * 15); 
     }
   }
 };
