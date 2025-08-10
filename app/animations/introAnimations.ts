@@ -43,10 +43,24 @@ export const initIntroAnimations = (
   isHovered: string | null,
   setIsHovered: (id: string | null) => void
 ) => {
+  // Get actual DOM elements
   const titles = titleRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
   const texts = textRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
   const images = imageRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
   const magneticElements = magneticRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
+
+  // Check if we have elements to animate
+  console.log('Animation elements found:', {
+    titles: titles.length,
+    texts: texts.length,
+    images: images.length,
+    magneticElements: magneticElements.length
+  });
+
+  if (titles.length === 0 && texts.length === 0 && images.length === 0) {
+    console.log('No elements found for animation');
+    return;
+  }
 
   // Initial state - hide all elements
   gsap.set([titles, texts, images], {
