@@ -29,13 +29,13 @@ interface ExcelRowData {
  * Row step:       -25% of H  (rows interlock)
  * Odd-row shift:  +50% of W
  * Same-row:        0 overlap  (no margin-left between items)
- --------------------------------------------------------------------- */
+  --------------------------------------------------------------------- */
 const HEX_W = 120;                                       // smaller width
 const HEX_H = Math.round((2 / Math.sqrt(3)) * HEX_W);    // ≈ 1.1547 * W
-const ROW_OVERLAP = Math.round(HEX_H * 0.25);            // 25% of height
+const ROW_OVERLAP = Math.round(HEX_H * 0.3);             // Increased to 30% of height for better connection
 const ODD_ROW_SHIFT = Math.round(HEX_W * 0.5);           // 50% of width
 const BORDER = 2;                                        // visual border (px)
-const FUDGE_Y = BORDER + 1;                              // anti-overlap tweak (try 2–4 on Safari)
+const FUDGE_Y = 0;                                       // Removed fudge factor
 const MAX_PER_ROW = 9;
 
 const Members: React.FC = () => {
@@ -148,8 +148,7 @@ const Members: React.FC = () => {
               key={rowIndex}
               className="flex justify-center"
               style={{
-                // Slightly less negative than 25% of height to prevent border collision
-                marginTop: rowIndex === 0 ? 0 : -(ROW_OVERLAP - FUDGE_Y),
+                marginTop: rowIndex === 0 ? 0 : -ROW_OVERLAP,
                 transform: rowIndex % 2 ? `translateX(${ODD_ROW_SHIFT}px)` : "none",
               }}
             >
@@ -177,21 +176,17 @@ const Members: React.FC = () => {
                     <div className="absolute bg-black overflow-hidden" style={{ inset: BORDER, clipPath: hexClip }}>
                       {/* Image layer */}
                       <MemberImage member={member} />
-                    </div>
-                  </div>
-
-                  {/* Hover Popup */}
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-30">
-                    <div className="bg-black/95 backdrop-blur-md border border-purple-500/60 rounded-xl p-4 text-center min-w-[160px] shadow-2xl">
-                      <h3 className="text-white font-bold text-base mb-2">
-                        {member.fullName}
-                      </h3>
-                      <div className="text-purple-300 text-sm font-medium">
-                        {member.team}
+                      
+                      {/* Hover Overlay - shows info within hexagon */}
+                      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center text-center p-2">
+                        <h3 className="text-white font-bold text-sm mb-1 leading-tight">
+                          {member.fullName}
+                        </h3>
+                        <div className="text-purple-300 text-xs font-medium leading-tight">
+                          {member.team}
+                        </div>
                       </div>
                     </div>
-                    {/* Arrow pointing down */}
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/95"></div>
                   </div>
                 </a>
               ))}
