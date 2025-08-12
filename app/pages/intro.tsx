@@ -259,22 +259,22 @@ export default function Intro() {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen p-16 bg-gradient-to-b from-[#0B070C] to-[#211824] text-white overflow-hidden">
-      <div ref={topRowRef} className="grid grid-cols-2 gap-16 mb-16">
+    <section ref={sectionRef} className="relative min-h-screen p-4 md:p-16 bg-gradient-to-b from-[#0B070C] to-[#211824] text-white overflow-hidden">
+      <div ref={topRowRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-8 md:mb-16">
 
-        <div ref={addMagneticRef} className="text-left order-1 cursor-pointer">
+        <div ref={addMagneticRef} className="text-center md:text-left order-1 cursor-pointer">
           <h2 
             ref={addTitleRef} 
             id="who-we-are-title"
-            className="text-5xl font-bold mb-6"
+            className="text-3xl md:text-5xl font-bold mb-4 md:mb-6"
             onMouseEnter={() => handleScramble('who-we-are-title', 'Who we are')}
             onMouseLeave={() => handleScramble('who-we-are-title', 'Who we are')}
           >
             <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
               Who we are
             </span>
-          </h2>
-          <div className="space-y-4 text-gray-300 leading-relaxed">
+                      </h2>
+          <div className="space-y-3 md:space-y-4 text-gray-300 leading-relaxed text-sm md:text-base">
             <p 
               ref={addTextRef}
               id="who-we-are-text-1"
@@ -300,7 +300,7 @@ export default function Intro() {
         </div>
 
         <div className="flex items-center order-2">
-          <div ref={addImageRef} className="relative rounded-lg h-[40vh] w-full shadow-2xl overflow-hidden">
+          <div ref={addImageRef} className="relative rounded-lg h-[30vh] md:h-[40vh] w-full shadow-2xl overflow-hidden">
             <Image
               src="/Team.png"
               alt="HackUTD Team"
@@ -312,45 +312,43 @@ export default function Intro() {
         </div>
       </div>
 
-      <div ref={bottomRowRef} className="grid grid-cols-2 gap-16">
+      <div ref={bottomRowRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
         
         <div className="flex items-center order-1">
-          <div ref={addImageRef} className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg h-[40vh] w-full shadow-2xl"></div>
+          <div ref={addImageRef} className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg h-[30vh] md:h-[40vh] w-full shadow-2xl"></div>
         </div>
 
-        <div ref={addMagneticRef} className="order-2 text-right cursor-pointer">
+        <div ref={addMagneticRef} className="order-2 text-center md:text-right cursor-pointer">
           <h2 
             ref={addTitleRef} 
-            id="our-vision-title"
-            className="text-5xl font-bold mb-6"
-            onMouseEnter={() => handleScramble('our-vision-title', 'Our Vision')}
-            onMouseLeave={() => handleScramble('our-vision-title', 'Our Vision')}
+            id="meet-team-title"
+            className="text-3xl md:text-5xl font-bold mb-4 md:mb-6"
+            onMouseEnter={() => handleScramble('meet-team-title', 'Meet the Team')}
+            onMouseLeave={() => handleScramble('meet-team-title', 'Meet the Team')}
           >
             <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
-              Our Vision
+              Meet the Team
             </span>
-          </h2>
-          <div className="space-y-4 text-gray-300 leading-relaxed">
+                      </h2>
+          <div className="space-y-3 md:space-y-4 text-gray-300 leading-relaxed text-sm md:text-base">
             <p 
               ref={addTextRef}
-              id="our-vision-text-1"
-              onMouseEnter={() => handleScramble('our-vision-text-1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')}
-              onMouseLeave={() => handleScramble('our-vision-text-1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')}
+              id="meet-team-text-1"
+              onMouseEnter={() => handleScramble('meet-team-text-1', 'We\'re the directors of HackUTD this year and are very excited for the next iteration of our event. Our team works hard all year round to make our events possible, and we can\'t wait to put on one more successful hackathon!')}
+              onMouseLeave={() => handleScramble('meet-team-text-1', 'We\'re the directors of HackUTD this year and are very excited for the next iteration of our event. Our team works hard all year round to make our events possible, and we can\'t wait to put on one more successful hackathon!')}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-              aliquip ex ea commodo consequat.
+              We're the directors of HackUTD this year and are very excited for the next iteration of our event. 
+              Our team works hard all year round to make our events possible, and we can't wait to put on one more 
+              successful hackathon!
             </p> 
             <p 
               ref={addTextRef}
-              id="our-vision-text-2"
-              onMouseEnter={() => handleScramble('our-vision-text-2', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')}
-              onMouseLeave={() => handleScramble('our-vision-text-2', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')}
+              id="meet-team-text-2"
+              onMouseEnter={() => handleScramble('meet-team-text-2', '– Kelly Zhou & Addy Dunning Co-Directors, HackUTD \'25')}
+              onMouseLeave={() => handleScramble('meet-team-text-2', '– Kelly Zhou & Addy Dunning Co-Directors, HackUTD \'25')}
             >
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              – Kelly Zhou & Addy Dunning
+              Co-Directors, HackUTD '24
             </p>
           </div>
         </div>
