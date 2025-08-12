@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import * as XLSX from "xlsx";
+import { initMembersAnimations } from "../animations/membersAnimations";
 
-/* ---------------- Types ---------------- */
 interface TeamMember {
   id: number;
   firstName: string;
@@ -24,24 +24,19 @@ interface ExcelRowData {
   linkedin_url?: string; LinkedIn_URL?: string; "LinkedIn URL"?: string; linkedinUrl?: string; LinkedIn?: string;
 }
 
-/* --------- Geometry: pointy-top hex (no horizontal overlap) ---------
- * H = (2/√3) * W  ≈ 1.1547 * W
- * Row step:       -25% of H  (rows interlock)
- * Odd-row shift:  +50% of W
- * Same-row:        0 overlap  (no margin-left between items)
-  --------------------------------------------------------------------- */
-const HEX_W = 120;                                       // smaller width
-const HEX_H = Math.round((2 / Math.sqrt(3)) * HEX_W);    // ≈ 1.1547 * W
-const ROW_OVERLAP = Math.round(HEX_H * 0.3);             // Increased to 30% of height for better connection
-const ODD_ROW_SHIFT = Math.round(HEX_W * 0.5);           // 50% of width
-const BORDER = 2;                                        // visual border (px)
-const FUDGE_Y = 0;                                       // Removed fudge factor
-const MAX_PER_ROW = 9;
+const HEX_W = 120;                                       
+const HEX_H = Math.round((2 / Math.sqrt(3)) * HEX_W);   
+const ROW_OVERLAP = Math.round(HEX_H * 0.3);            
+const ODD_ROW_SHIFT = Math.round(HEX_W * 0.5);          
+const BORDER = 2;                                        
+const FUDGE_Y = 0;                                       
+const MAX_PER_ROW = 4;                                   
 
 const Members: React.FC = () => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const membersContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     (async () => {
@@ -87,12 +82,23 @@ const Members: React.FC = () => {
     })();
   }, []);
 
+  
+  useEffect(() => {
+    if (!loading && teamMembers.length > 0) {
+      const timer = setTimeout(() => {
+        initMembersAnimations();
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [loading, teamMembers.length]);
+
   const MemberImage: React.FC<MemberImageProps> = ({ member }) => {
     const [imageError, setImageError] = useState(false);
 
     if (!member.hasImage || imageError) {
       return (
-        <div className="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-xl font-bold">
+        <div className="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-2xl md:text-3xl font-black tracking-wider">
           {member.firstName ? member.firstName[0].toUpperCase() : "?"}
         </div>
       );
@@ -112,7 +118,27 @@ const Members: React.FC = () => {
 
   const chunk = <T,>(arr: T[], n: number) =>
     Array.from({ length: Math.ceil(arr.length / n) }, (_, i) => arr.slice(i * n, i * n + n));
-  const rows = chunk(teamMembers, MAX_PER_ROW);
+  
+  const createAlternatingLayout = (members: TeamMember[]) => {
+    const rows: TeamMember[][] = [];
+    let currentIndex = 0;
+    let rowIndex = 0;
+    
+    while (currentIndex < members.length) {
+      const isEvenRow = rowIndex % 2 === 0;
+      const rowSize = isEvenRow ? 5 : 7;
+      const row = members.slice(currentIndex, currentIndex + rowSize);
+      if (row.length > 0) {
+        rows.push(row);
+      }
+      currentIndex += rowSize;
+      rowIndex++;
+    }
+    
+    return rows;
+  };
+  
+  const rows = createAlternatingLayout(teamMembers);
 
   if (loading) {
     return (
@@ -132,24 +158,25 @@ const Members: React.FC = () => {
   const hexClip = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center py-6 bg-black">
-      <div className="w-[95%] max-w-8xl">
-        <div className="text-center mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 bg-clip-text text-transparent mb-2">
+    <div className="w-full min-h-screen flex items-center justify-center py-6 md:py-8 bg-black">
+      <div className="w-[95%] max-w-8xl px-4 md:px-0">
+        <div className="text-center mb-10 md:mb-16">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 bg-clip-text text-transparent mb-4 md:mb-6 tracking-tight">
             HackUTD Team
           </h1>
-          <p className="text-sm text-gray-400">{teamMembers.length} amazing members</p>
+          <p className="text-base md:text-lg lg:text-xl text-gray-300 font-medium tracking-wide">
+            {teamMembers.length} amazing members building the future
+          </p>
         </div>
 
-        {/* Honeycomb */}
-        <div className="flex flex-col items-center">
+        <div ref={membersContainerRef} data-members-container className="flex flex-col items-center">
           {rows.map((row, rowIndex) => (
             <div
               key={rowIndex}
               className="flex justify-center"
               style={{
                 marginTop: rowIndex === 0 ? 0 : -ROW_OVERLAP,
-                transform: rowIndex % 2 ? `translateX(${ODD_ROW_SHIFT}px)` : "none",
+                transform: rowIndex % 2 ? `translateX(-${ODD_ROW_SHIFT}px)` : "none",
               }}
             >
               {row.map((member) => (
@@ -160,8 +187,8 @@ const Members: React.FC = () => {
                   rel="noopener noreferrer"
                   className="group relative block"
                 >
-                  {/* Outer hex with gradient border; fixed box size (no padding) */}
                   <div
+                    data-hexagon
                     className="relative"
                     style={{
                       width: HEX_W,
@@ -169,20 +196,18 @@ const Members: React.FC = () => {
                       clipPath: hexClip,
                       background: "linear-gradient(90deg,#a855f7,#ec4899,#f59e0b)",
                       contain: "layout paint",
-                      transform: "translateZ(0)", // guards against subpixel bleed
+                      transform: "translateZ(0)",
                     }}
                   >
-                    {/* Inner content inset = visible border */}
+                    
                     <div className="absolute bg-black overflow-hidden" style={{ inset: BORDER, clipPath: hexClip }}>
-                      {/* Image layer */}
                       <MemberImage member={member} />
                       
-                      {/* Hover Overlay - shows info within hexagon */}
-                      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center text-center p-2">
-                        <h3 className="text-white font-bold text-sm mb-1 leading-tight">
+                      <div className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center text-center p-1">
+                        <h3 className="text-white font-bold text-[8px] md:text-[8px] lg:text-[10px] xl:text-xs mb-0.5 leading-tight tracking-wide">
                           {member.fullName}
                         </h3>
-                        <div className="text-purple-300 text-xs font-medium leading-tight">
+                        <div className="text-purple-300 text-[6px] md:text-[6px] lg:text-[8px] font-semibold leading-tight tracking-wide uppercase">
                           {member.team}
                         </div>
                       </div>
