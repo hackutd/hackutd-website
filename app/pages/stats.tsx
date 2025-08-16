@@ -46,29 +46,29 @@ export default function Stats() {
         })}
       </div>
 
-      <div className="z-10 relative flex flex-col items-center justify-center text-center h-[150vh] px-4">
-        <div ref={addCardRef} className="-translate-x-[12vw]">
+      <div className="z-10 relative flex flex-col items-center justify-center text-center h-[150vh] px-4 md:px-8">
+        <div ref={addCardRef} className="transform md:-translate-x-[12vw] mb-8 md:mb-0">
           <StatCard
             title="1000+"
             subtitle="Participants"
             body="Over 1000 students from across the country"
-            align="left"
+            align="center"
           />
         </div>
-        <div ref={addCardRef} className="translate-x-[12vw] -translate-y-[7vh]">
+        <div ref={addCardRef} className="transform md:translate-x-[12vw] md:-translate-y-[7vh] mb-8 md:mb-0">
           <StatCard
             title="500+"
             subtitle="so the thing is there's a lot of stuff"
             body="And this stuff"
-            align="left"
+            align="center"
           />
         </div>
-        <div ref={addCardRef} className="-translate-x-[12vw] -translate-y-[14vh]">
+        <div ref={addCardRef} className="transform md:-translate-x-[12vw] md:-translate-y-[14vh]">
           <StatCard
             title="$10K+"
             subtitle="so there's even more stuff"
             body="wow monies"
-            align="left"
+            align="center"
           />
         </div>
       </div>

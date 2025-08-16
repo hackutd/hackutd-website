@@ -60,12 +60,12 @@ export default function PastHackathons() {
   return (
     <div>
       <h1
-        className="font-inter text-[67px] text-center font-bold bg-clip-text text-transparent"
+        className="font-inter text-3xl md:text-5xl lg:text-[67px] text-center font-bold bg-clip-text text-transparent px-4"
         style={{ backgroundImage: 'linear-gradient(to bottom right, #FF56D6 0%, #FF7AA2 35%, #FF9167 70%)' }}
       >
         Oh how far we&apos;ve come...
       </h1>
-      <h3 className="text-center mb-4">Hover over a badge to checkout past hackathons!</h3>
+      <h3 className="text-center mb-4 text-sm md:text-base px-4">Scroll to see our past hackathons!</h3>
 
       <section
         ref={sectionRef}
@@ -92,13 +92,13 @@ export default function PastHackathons() {
                     src={hackathon.src}
                     alt={hackathon.alt}
                     priority={index === 0}
-                    className="w-[18rem] h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
+                    className="w-48 md:w-64 lg:w-[18rem] h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
                     onLoadingComplete={() => {
                       try { ScrollTrigger.refresh(); } catch {}
                     }}
                   />
                 </Link>
-                <p className="mt-6 text-lg text-white font-semibold drop-shadow-lg">{hackathon.label}</p>
+                <p className="mt-4 md:mt-6 text-base md:text-lg text-white font-semibold drop-shadow-lg">{hackathon.label}</p>
               </div>
             </article>
           ))}
@@ -115,19 +115,19 @@ export default function PastHackathons() {
             
             <div className="absolute inset-0 bg-black/60 z-0"></div>
             
-            <div className="w-full max-w-7xl mx-auto relative z-10">
-              <h4 className="text-center text-2xl font-semibold mb-8 text-white drop-shadow-lg">All HackUTD Badges</h4>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 place-items-center">
+            <div className="w-full max-w-7xl mx-auto relative z-10 px-4">
+              <h4 className="text-center text-xl md:text-2xl font-semibold mb-6 md:mb-8 text-white drop-shadow-lg">All HackUTD Badges</h4>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 place-items-center">
                 {hackathons.map((hackathon, i) => (
                   <div key={`all-${i}`} className="text-center">
                     <Link href={hackathon.href} target="_blank" rel="noopener noreferrer">
                       <Image
                         src={hackathon.src}
                         alt={hackathon.alt}
-                        className="w-28 h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
+                        className="w-20 md:w-28 h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
                       />
                     </Link>
-                    <p className="mt-3 text-sm text-white font-medium drop-shadow-md">{hackathon.label}</p>
+                    <p className="mt-2 md:mt-3 text-xs md:text-sm text-white font-medium drop-shadow-md">{hackathon.label}</p>
                   </div>
                 ))}
               </div>
@@ -137,19 +137,19 @@ export default function PastHackathons() {
       </section>
 
       {/* Mobile: simple list (no GSAP) */}
-      <div className="lg:hidden w-full max-w-7xl mx-auto px-8 py-4 mb-28">
-        <h4 className="text-center text-2xl font-semibold mb-8">All HackUTD Badges</h4>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 place-items-center">
+      <div className="lg:hidden w-full max-w-7xl mx-auto px-4 md:px-8 py-4 mb-28">
+        <h4 className="text-center text-xl md:text-2xl font-semibold mb-6 md:mb-8">All HackUTD Badges</h4>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 place-items-center">
           {hackathons.map((hackathon, index) => (
             <div key={index} className="font-DM-Sans text-center items-center flex flex-col">
               <Link href={hackathon.href} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={hackathon.src}
                   alt={hackathon.alt}
-                  className="w-28 h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
+                  className="w-20 md:w-28 h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
                 />
               </Link>
-              <p className="mt-4 text-sm">{hackathon.label}</p>
+              <p className="mt-3 md:mt-4 text-xs md:text-sm">{hackathon.label}</p>
             </div>
           ))}
         </div>
