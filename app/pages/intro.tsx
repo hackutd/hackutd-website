@@ -26,11 +26,11 @@ export default function Intro() {
     const images = imageRefs.current;
     const magneticElements = magneticRefs.current;
 
-    console.log('Elements found:', {
+    console.log("Elements found:", {
       titles: titles.length,
       texts: texts.length,
       images: images.length,
-      magneticElements: magneticElements.length
+      magneticElements: magneticElements.length,
     });
 
     gsap.set([titles, texts, images], {
@@ -38,14 +38,19 @@ export default function Intro() {
       y: 50,
     });
 
-    
-    const textElements = document.querySelectorAll('[id*="-text-"], [id*="-title"]');
+    const textElements = document.querySelectorAll(
+      '[id*="-text-"], [id*="-title"]'
+    );
     textElements.forEach((element) => {
-      const actualText = element.textContent || '';
-      const randomText = actualText.split('').map(() => '!@#$%^&*()_+-=[]{}|;:,.<>?~`'[Math.floor(Math.random() * 30)]).join('');
+      const actualText = element.textContent || "";
+      const randomText = actualText
+        .split("")
+        .map(
+          () => "!@#$%^&*()_+-=[]{}|;:,.<>?~`"[Math.floor(Math.random() * 30)]
+        )
+        .join("");
       element.textContent = randomText;
     });
-
 
     const topRowTl = gsap.timeline({
       scrollTrigger: {
@@ -63,21 +68,28 @@ export default function Intro() {
         duration: 0.8,
         ease: "power3.out",
       })
-      .to(texts.slice(0, 2), {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out",
-      }, "-=0.4")
-      .to(images[0], {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }, "-=0.6");
+      .to(
+        texts.slice(0, 2),
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      )
+      .to(
+        images[0],
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        "-=0.6"
+      );
 
-    
     const bottomRowTl = gsap.timeline({
       scrollTrigger: {
         trigger: bottomRowRef.current,
@@ -94,32 +106,39 @@ export default function Intro() {
         duration: 0.8,
         ease: "power3.out",
       })
-      .to(titles[1], {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }, "-=0.4")
-      .to(texts.slice(2, 4), {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out",
-      }, "-=0.4");
+      .to(
+        titles[1],
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        "-=0.4"
+      )
+      .to(
+        texts.slice(2, 4),
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
 
-
-
-    
     titles.forEach((title) => {
-      const chars = title.textContent?.split('') || [];
-      title.innerHTML = chars.map(char => 
-        char === ' ' ? ' ' : `<span class="char">${char}</span>`
-      ).join('');
-      
-      const charSpans = title.querySelectorAll('.char');
+      const chars = title.textContent?.split("") || [];
+      title.innerHTML = chars
+        .map((char) =>
+          char === " " ? " " : `<span class="char">${char}</span>`
+        )
+        .join("");
+
+      const charSpans = title.querySelectorAll(".char");
       gsap.set(charSpans, { opacity: 0, y: 20 });
-      
+
       gsap.to(charSpans, {
         opacity: 1,
         y: 0,
@@ -134,28 +153,30 @@ export default function Intro() {
       });
     });
 
-    
     magneticElements.forEach((element) => {
-     
-      const hasTextContent = element.textContent && element.textContent.trim().length > 0;
-      const isTextContainer = element.classList.contains('text-left') || element.classList.contains('text-right');
-      
+      const hasTextContent =
+        element.textContent && element.textContent.trim().length > 0;
+      const isTextContainer =
+        element.classList.contains("text-left") ||
+        element.classList.contains("text-right");
+
       if (!hasTextContent && !isTextContainer) {
-        return; 
+        return;
       }
-      
+
       const handleMouseMove = (e: MouseEvent) => {
         const rect = element.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        
+
         const distance = Math.sqrt(x * x + y * y);
-        const maxDistance = Math.sqrt(rect.width * rect.width + rect.height * rect.height) / 2;
+        const maxDistance =
+          Math.sqrt(rect.width * rect.width + rect.height * rect.height) / 2;
         const strength = Math.max(0, 1 - distance / maxDistance);
-        
+
         const moveX = x * strength * 0.3;
         const moveY = y * strength * 0.3;
-        
+
         gsap.to(element, {
           x: moveX,
           y: moveY,
@@ -175,13 +196,13 @@ export default function Intro() {
         });
       };
 
-      element.addEventListener('mousemove', handleMouseMove);
-      element.addEventListener('mouseleave', handleMouseLeave);
+      element.addEventListener("mousemove", handleMouseMove);
+      element.addEventListener("mouseleave", handleMouseLeave);
     });
 
     // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -210,26 +231,30 @@ export default function Intro() {
   };
 
   // Text scramble effect
-  const scrambleText = (randomText: string, actualText: string, element: HTMLElement) => {
-    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?~`';
+  const scrambleText = (
+    randomText: string,
+    actualText: string,
+    element: HTMLElement
+  ) => {
+    const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?~`";
     let iterations = 0;
-    
+
     const interval = setInterval(() => {
       element.textContent = actualText
-        .split('')
+        .split("")
         .map((char, index) => {
           if (index < iterations) {
             return actualText[index];
           }
           return chars[Math.floor(Math.random() * chars.length)];
         })
-        .join('');
-      
+        .join("");
+
       if (iterations >= actualText.length) {
         clearInterval(interval);
         element.textContent = actualText;
       }
-      
+
       iterations += 2;
     }, 30);
   };
@@ -237,118 +262,182 @@ export default function Intro() {
   const handleScramble = (elementId: string, actualText: string) => {
     const element = document.getElementById(elementId);
     if (element) {
-     
       if (revealedTexts.has(elementId)) {
         return;
       }
-      
+
       if (isHovered === elementId) {
-        
         setIsHovered(null);
       } else {
-        
-        scrambleText('', actualText, element);
+        scrambleText("", actualText, element);
         setIsHovered(elementId);
-        
-        
+
         setTimeout(() => {
           setRevealedTexts(new Set([...revealedTexts, elementId]));
-        }, actualText.length * 15); 
+        }, actualText.length * 15);
       }
     }
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen p-4 md:p-16 bg-gradient-to-b from-[#0B070C] to-[#211824] text-white overflow-hidden">
-      <div ref={topRowRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-8 md:mb-16">
-
-        <div ref={addMagneticRef} className="text-center md:text-left order-1 cursor-pointer">
-          <h2 
-            ref={addTitleRef} 
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen p-4 md:p-16 bg-gradient-to-b from-[#0B070C] to-[#211824] text-white overflow-hidden"
+    >
+      <div
+        ref={topRowRef}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-8 md:mb-16"
+      >
+        <div
+          ref={addMagneticRef}
+          className="text-center md:text-left order-1 cursor-pointer"
+        >
+          <h2
+            ref={addTitleRef}
             id="who-we-are-title"
             className="text-3xl md:text-5xl font-bold mb-4 md:mb-6"
-            onMouseEnter={() => handleScramble('who-we-are-title', 'Who we are')}
-            onMouseLeave={() => handleScramble('who-we-are-title', 'Who we are')}
+            onMouseEnter={() =>
+              handleScramble("who-we-are-title", "Who we are")
+            }
+            onMouseLeave={() =>
+              handleScramble("who-we-are-title", "Who we are")
+            }
           >
             <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
               Who we are
             </span>
-                      </h2>
+          </h2>
           <div className="space-y-3 md:space-y-4 text-gray-300 leading-relaxed text-sm md:text-base">
-            <p 
+            <p
               ref={addTextRef}
               id="who-we-are-text-1"
-              onMouseEnter={() => handleScramble('who-we-are-text-1', 'We host HackUTD, Texas\' largest hackathon. We also assist with other hackathons at UTD, and host helpful workshops that anyone can attend. Regardless of what we\'re working on, we aim to make our hackathons accessible and open to everyone. Glad to see you here!')}
-              onMouseLeave={() => handleScramble('who-we-are-text-1', 'We host HackUTD, Texas\' largest hackathon. We also assist with other hackathons at UTD, and host helpful workshops that anyone can attend. Regardless of what we\'re working on, we aim to make our hackathons accessible and open to everyone. Glad to see you here!')}
+              onMouseEnter={() =>
+                handleScramble(
+                  "who-we-are-text-1",
+                  "We host HackUTD, Texas' largest hackathon. We also assist with other hackathons at UTD, and host helpful workshops that anyone can attend. Regardless of what we're working on, we aim to make our hackathons accessible and open to everyone. Glad to see you here!"
+                )
+              }
+              onMouseLeave={() =>
+                handleScramble(
+                  "who-we-are-text-1",
+                  "We host HackUTD, Texas' largest hackathon. We also assist with other hackathons at UTD, and host helpful workshops that anyone can attend. Regardless of what we're working on, we aim to make our hackathons accessible and open to everyone. Glad to see you here!"
+                )
+              }
             >
-              We host HackUTD, Texas' largest hackathon. We also assist with other 
-              hackathons at UTD, and host helpful workshops that anyone can 
-              attend. Regardless of what we're working on, we aim to make our 
-              hackathons accessible and open to everyone. Glad to see you here!
+              We host HackUTD, Texas&apos; largest hackathon. We also assist
+              with other hackathons at UTD, and host helpful workshops that
+              anyone can attend. Regardless of what we&apos;re working on, we
+              aim to make our hackathons accessible and open to everyone. Glad
+              to see you here!
             </p>
-            <p 
+            <p
               ref={addTextRef}
               id="who-we-are-text-2"
-              onMouseEnter={() => handleScramble('who-we-are-text-2', 'We inspire students to innovate and learn new technologies through hackathons, 24-hour events with challenges, free food & merch, and fun games & activities.')}
-              onMouseLeave={() => handleScramble('who-we-are-text-2', 'We inspire students to innovate and learn new technologies through hackathons, 24-hour events with challenges, free food & merch, and fun games & activities.')}
+              onMouseEnter={() =>
+                handleScramble(
+                  "who-we-are-text-2",
+                  "We inspire students to innovate and learn new technologies through hackathons, 24-hour events with challenges, free food & merch, and fun games & activities."
+                )
+              }
+              onMouseLeave={() =>
+                handleScramble(
+                  "who-we-are-text-2",
+                  "We inspire students to innovate and learn new technologies through hackathons, 24-hour events with challenges, free food & merch, and fun games & activities."
+                )
+              }
             >
-              We inspire students to innovate and learn new technologies through 
-              hackathons, 24-hour events with challenges, free food & merch, and 
+              We inspire students to innovate and learn new technologies through
+              hackathons, 24-hour events with challenges, free food & merch, and
               fun games & activities.
             </p>
           </div>
         </div>
 
         <div className="flex items-center order-2">
-          <div ref={addImageRef} className="relative rounded-lg h-[30vh] md:h-[40vh] w-full shadow-2xl overflow-hidden">
+          <div
+            ref={addImageRef}
+            className="relative rounded-lg h-[30vh] md:h-[40vh] w-full shadow-2xl overflow-hidden"
+          >
             <Image
               src="/Team.png"
               alt="HackUTD Team"
               fill
-              className="object-cover"
+              className="object-cover rounded-xl"
               priority
             />
           </div>
         </div>
       </div>
 
-      <div ref={bottomRowRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-        
+      <div
+        ref={bottomRowRef}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16"
+      >
         <div className="flex items-center order-1">
-          <div ref={addImageRef} className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg h-[30vh] md:h-[40vh] w-full shadow-2xl"></div>
+          <div
+            ref={addImageRef}
+            className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg h-[30vh] md:h-[40vh] w-full shadow-2xl"
+          ></div>
         </div>
 
-        <div ref={addMagneticRef} className="order-2 text-center md:text-right cursor-pointer">
-          <h2 
-            ref={addTitleRef} 
+        <div
+          ref={addMagneticRef}
+          className="order-2 text-center md:text-right cursor-pointer"
+        >
+          <h2
+            ref={addTitleRef}
             id="meet-team-title"
             className="text-3xl md:text-5xl font-bold mb-4 md:mb-6"
-            onMouseEnter={() => handleScramble('meet-team-title', 'Meet the Team')}
-            onMouseLeave={() => handleScramble('meet-team-title', 'Meet the Team')}
+            onMouseEnter={() =>
+              handleScramble("meet-team-title", "Meet the Team")
+            }
+            onMouseLeave={() =>
+              handleScramble("meet-team-title", "Meet the Team")
+            }
           >
             <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
               Meet the Team
             </span>
-                      </h2>
+          </h2>
           <div className="space-y-3 md:space-y-4 text-gray-300 leading-relaxed text-sm md:text-base">
-            <p 
+            <p
               ref={addTextRef}
               id="meet-team-text-1"
-              onMouseEnter={() => handleScramble('meet-team-text-1', 'We\'re the directors of HackUTD this year and are very excited for the next iteration of our event. Our team works hard all year round to make our events possible, and we can\'t wait to put on one more successful hackathon!')}
-              onMouseLeave={() => handleScramble('meet-team-text-1', 'We\'re the directors of HackUTD this year and are very excited for the next iteration of our event. Our team works hard all year round to make our events possible, and we can\'t wait to put on one more successful hackathon!')}
+              onMouseEnter={() =>
+                handleScramble(
+                  "meet-team-text-1",
+                  "We're the directors of HackUTD this year and are very excited for the next iteration of our event. Our team works hard all year round to make our events possible, and we can't wait to put on one more successful hackathon!"
+                )
+              }
+              onMouseLeave={() =>
+                handleScramble(
+                  "meet-team-text-1",
+                  "We're the directors of HackUTD this year and are very excited for the next iteration of our event. Our team works hard all year round to make our events possible, and we can't wait to put on one more successful hackathon!"
+                )
+              }
             >
-              We're the directors of HackUTD this year and are very excited for the next iteration of our event. 
-              Our team works hard all year round to make our events possible, and we can't wait to put on one more 
-              successful hackathon!
-            </p> 
-            <p 
+              We&apos;re the directors of HackUTD this year and are very excited
+              for the next iteration of our event. Our team works hard all year
+              round to make our events possible, and we can&apos;t wait to put
+              on one more successful hackathon!
+            </p>
+            <p
               ref={addTextRef}
               id="meet-team-text-2"
-              onMouseEnter={() => handleScramble('meet-team-text-2', '– Kelly Zhou & Addy Dunning Co-Directors, HackUTD \'25')}
-              onMouseLeave={() => handleScramble('meet-team-text-2', '– Kelly Zhou & Addy Dunning Co-Directors, HackUTD \'25')}
+              onMouseEnter={() =>
+                handleScramble(
+                  "meet-team-text-2",
+                  "– Kelly Zhou & Addy Dunning Co-Directors, HackUTD '25"
+                )
+              }
+              onMouseLeave={() =>
+                handleScramble(
+                  "meet-team-text-2",
+                  "– Kelly Zhou & Addy Dunning Co-Directors, HackUTD '25"
+                )
+              }
             >
-              – Kelly Zhou & Addy Dunning
-              Co-Directors, HackUTD '24
+              – Kelly Zhou & Addy Dunning Co-Directors, HackUTD &apos;24
             </p>
           </div>
         </div>

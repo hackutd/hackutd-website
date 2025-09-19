@@ -33,6 +33,7 @@ export default function StatCard({
       className={`
         flex flex-col justify-center
         w-[90vw] h-[25vh] md:w-[28vw] md:h-[35vh]
+        liquid-glass
         rounded-[1rem]
         bg-gradient-to-br from-[rgba(193,193,255,0.15)] to-[rgba(193,193,255,0.25)]
         bg-blend-plus-lighter
@@ -52,40 +53,40 @@ export default function StatCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span 
+      <span
         className={`
           text-4xl md:text-[4vw] font-bold leading-none drop-shadow-lg
           transition-all duration-500 ease-out
-          ${isHovered ? 'md:text-[4.2vw] text-white' : 'text-white/90'}
+          ${isHovered ? "md:text-[4.2vw] text-white" : "text-white/90"}
         `}
       >
         {title}
       </span>
-      <span 
+      <span
         className={`
           text-lg md:text-[1.5vw] font-medium mt-2
           transition-all duration-500 ease-out
-          ${isHovered ? 'text-white' : 'text-white/80'}
+          ${isHovered ? "text-white" : "text-white/80"}
         `}
       >
         {subtitle}
       </span>
-      <span 
+      <span
         className={`
           text-sm md:text-[1.2vw] font-normal mt-1
           transition-all duration-500 ease-out
-          ${isHovered ? 'text-white/80' : 'text-white/60'}
+          ${isHovered ? "text-white/80" : "text-white/60"}
         `}
       >
         {body}
       </span>
-      
-      <div 
+
+      <div
         className={`
           absolute inset-0 rounded-[1rem] opacity-0
           transition-opacity duration-500 ease-out
           bg-gradient-to-br from-[rgba(255,255,255,0.1)] to-[rgba(255,255,255,0.05)]
-          ${isHovered ? 'opacity-100' : ''}
+          ${isHovered ? "opacity-100" : ""}
         `}
       />
     </div>
