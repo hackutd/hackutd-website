@@ -146,13 +146,25 @@ export function Navbar({
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-6 text-sm text-gray-300 md:flex">
             {links.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-purple-300 transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(link.href);
+                  if (target) {
+                    const yOffset = -80; // adjust for fixed navbar height
+                    const y =
+                      target.getBoundingClientRect().top +
+                      window.scrollY +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}
+                className="hover:text-purple-300 transition-colors cursor-pointer"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
