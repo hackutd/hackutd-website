@@ -53,16 +53,20 @@ export default function OpenSource() {
   }, []);
 
   const addCardRef = (el: HTMLDivElement | null) => {
-    if (el && !projectCardRefs.current.includes(el)) projectCardRefs.current.push(el);
+    if (el && !projectCardRefs.current.includes(el))
+      projectCardRefs.current.push(el);
   };
   const addImageRef = (el: HTMLDivElement | null) => {
-    if (el && !projectImageRefs.current.includes(el)) projectImageRefs.current.push(el);
+    if (el && !projectImageRefs.current.includes(el))
+      projectImageRefs.current.push(el);
   };
   const addTitleRef = (el: HTMLHeadingElement | null) => {
-    if (el && !projectTitleRefs.current.includes(el)) projectTitleRefs.current.push(el);
+    if (el && !projectTitleRefs.current.includes(el))
+      projectTitleRefs.current.push(el);
   };
   const addDescRef = (el: HTMLParagraphElement | null) => {
-    if (el && !projectDescRefs.current.includes(el)) projectDescRefs.current.push(el);
+    if (el && !projectDescRefs.current.includes(el))
+      projectDescRefs.current.push(el);
   };
 
   return (
@@ -93,7 +97,8 @@ export default function OpenSource() {
             ref={subtitleRef}
             className="block text-gray-800 text-sm md:text-base mb-4 md:mb-6 px-4 !opacity-100 !visible"
           >
-            As active participants in the hackathon community, we've built open-source tools to support and empower other organizers.
+            As active participants in the hackathon community, we've built
+            open-source tools to support and empower other organizers.
             <br />
             Click on the projects below to learn more!
           </p>
@@ -112,7 +117,11 @@ export default function OpenSource() {
                          transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(59,130,246,0.5)]
                          flex flex-col items-center justify-center p-3 md:p-4 lg:p-2"
             >
-              <Link href={project.url} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div
                   ref={addImageRef}
                   className="w-full h-[140px] sm:h-[160px] md:h-[200px] lg:h-[40vh] lg:w-[34vw] relative"
