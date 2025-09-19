@@ -21,7 +21,7 @@ export default function Hero() {
     <section ref={heroRef} className="relative h-screen bg-gradient-to-b from-[#0f0029] via-[#1f0140] to-[#fd9453] text-white overflow-hidden">
       <StarryBackground />
 
-      <Navbar />
+      <Navbar brandName="HackUTD" links={[]} />
 
       <div className="absolute top-4 right-4 md:top-8 md:right-8 z-20 flex items-center gap-2 md:gap-4">
         <a 
