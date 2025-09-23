@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-5xl mx-auto gap-3 md:gap-4 relative z-10 text-center md:text-left">
         <span className="text-white text-base md:text-lg lg:text-xl">© 2025 HackUTD by <span className="underline underline-offset-4">ACM UTD</span></span>
         <span className="text-white text-base md:text-lg lg:text-xl">
-          Get in Touch: <a href="mailto:hello@hackutd.co" className="underline underline-offset-4">hello@hackutd.co</a>
+          Get in Touch!: <a href="mailto:hello@hackutd.co" className="underline underline-offset-4">hello@hackutd.co</a>
         </span>
       </div>
       {/* Divider */}
