@@ -4,7 +4,6 @@ import Image from "next/image";
 import Hero from "./components/hero";
 import Navbar from "./components/Navbar";
 import { useEffect } from "react";
-import Stats from "./pages/stats";
 import Intro from "./pages/intro";
 import OpenSource from "./pages/openSource";
 import PastHackathons from "./pages/pastHackathons";
@@ -35,8 +34,6 @@ export default function Home() {
               <Hero />
             </div>
             <div id="intro">
-              <Stats />
-              <div className="my-16" />
               <Intro />
             </div>
             <div className="my-16" />

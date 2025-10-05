@@ -277,7 +277,7 @@ export default function Intro() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen p-4 md:p-16 bg-gradient-to-b from-[#0B070C] to-[#211824] text-white overflow-hidden"
+      className="relative min-h-screen p-4 md:p-16 bg-black text-white overflow-hidden"
     >
 
       {/* Main Content */}
