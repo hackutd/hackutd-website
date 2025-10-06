@@ -124,7 +124,7 @@ export default function OpenSource() {
               >
                 <div
                   ref={addImageRef}
-                  className="w-full h-[140px] sm:h-[160px] md:h-[200px] lg:h-[40vh] lg:w-[34vw] relative"
+                  className="w-full h-[140px] sm:h-[160px] md:h-[200px] lg:h-[40vh] lg:w-[38vw] relative"
                 >
                   <Image
                     src={project.image}
