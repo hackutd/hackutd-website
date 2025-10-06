@@ -85,7 +85,7 @@ export default function OpenSource() {
           >
             Our{" "}
             <span
-              className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-[#ffe3f7] to-[#ffb496] bg-clip-text text-transparent"
               style={{ WebkitTextFillColor: "transparent" }}
             >
               open source
