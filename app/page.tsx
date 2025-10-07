@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Hero from "./components/hero";
 import Navbar from "./components/Navbar";
-import { useEffect } from "react";
 import Intro from "./pages/intro";
 import OpenSource from "./pages/openSource";
 import PastHackathons from "./pages/pastHackathons";
 import Footer from "./pages/footer";
+import SponsorCarousel from "./components/SponsorCarousel";
 
 export default function Home() {
   return (
@@ -34,9 +33,12 @@ export default function Home() {
               <Hero />
             </div>
             <div id="intro">
+              <div className="my-0" />
+              
               <Intro />
+              <SponsorCarousel />
             </div>
-            <div className="my-16" />
+            <div className="my-0" />
             <div id="past">
               <PastHackathons />
             </div>
