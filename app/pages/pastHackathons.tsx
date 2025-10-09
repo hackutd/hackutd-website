@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { initPastHackathonsAnimations } from '../animations/pastHackathonsAnimations';
 import duck from '@/public/assets/horizontalScroll/duck.png';
 import frog from '@/public/assets/horizontalScroll/frog.png';
-import mascot from '@/public/assets/horizontalScroll/mascot.gif';
 
 export default function PastHackathons() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -110,8 +109,10 @@ export default function PastHackathons() {
                   
                   <div className="absolute bottom-32 left-16 md:left-32 z-10 animate-float-fast">
                     <Image
-                      src={mascot}
+                      src="/assets/horizontalScroll/mascot.gif"
                       alt="Floating mascot"
+                      width={256}
+                      height={256}
                       className="w-36 md:w-48 lg:w-64 h-auto opacity-90"
                     />
                   </div>
