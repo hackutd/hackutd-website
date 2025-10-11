@@ -6,8 +6,6 @@ import Image from "next/image";
 export default function SponsorCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Sample sponsors - replace with actual sponsor logos
-  // Add your sponsor logos to /public/sponsors/ folder
   const sponsors = [
     { name: "Snowflake", logo: "/logo.svg" },
     { name: "Intel", logo: "/logo.svg" },
@@ -20,8 +18,7 @@ export default function SponsorCarousel() {
     { name: "Microsoft", logo: "/logo.svg" },
     { name: "Apple", logo: "/logo.svg" },
   ];
-
-  // Duplicate the sponsors array for seamless infinite scroll
+// Duplicate the sponsors array for seamless infinite scroll
   const duplicatedSponsors = [...sponsors, ...sponsors, ...sponsors];
 
   useEffect(() => {
