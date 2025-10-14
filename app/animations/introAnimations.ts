@@ -7,29 +7,6 @@ if (typeof window !== "undefined") {
 }
 
 
-const scrambleText = (randomText: string, actualText: string, element: HTMLElement) => {
-  const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?~`';
-  let iterations = 0;
-  
-  const interval = setInterval(() => {
-    element.textContent = actualText
-      .split('')
-      .map((char, index) => {
-        if (index < iterations) {
-          return actualText[index];
-        }
-        return chars[Math.floor(Math.random() * chars.length)];
-      })
-      .join('');
-    
-    if (iterations >= actualText.length) {
-      clearInterval(interval);
-      element.textContent = actualText;
-    }
-    
-    iterations += 2;
-  }, 30);
-};
 
 export const initIntroAnimations = (
   topRowRef: React.RefObject<HTMLElement | null>,
@@ -37,11 +14,7 @@ export const initIntroAnimations = (
   titleRefs: React.RefObject<HTMLHeadingElement | null>[],
   textRefs: React.RefObject<HTMLParagraphElement | null>[],
   imageRefs: React.RefObject<HTMLDivElement | null>[],
-  magneticRefs: React.RefObject<HTMLDivElement | null>[],
-  revealedTexts: Set<string>,
-  setRevealedTexts: (texts: Set<string>) => void,
-  isHovered: string | null,
-  setIsHovered: (id: string | null) => void
+  magneticRefs: React.RefObject<HTMLDivElement | null>[]
 ) => {
  
   const titles = titleRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
@@ -68,13 +41,6 @@ export const initIntroAnimations = (
     y: 50,
   });
 
-  
-  const textElements = document.querySelectorAll('[id*="-text-"], [id*="-title"]');
-  textElements.forEach((element) => {
-    const actualText = element.textContent || '';
-    const randomText = actualText.split('').map(() => '!@#$%^&*()_+-=[]{}|;:,.<>?~`'[Math.floor(Math.random() * 30)]).join('');
-    element.textContent = randomText;
-  });
 
   
   const topRowTl = gsap.timeline({
@@ -213,33 +179,3 @@ export const initIntroAnimations = (
   };
 };
 
-export const handleTextScramble = (
-  elementId: string, 
-  actualText: string, 
-  revealedTexts: Set<string>,
-  setRevealedTexts: (texts: Set<string>) => void,
-  isHovered: string | null,
-  setIsHovered: (id: string | null) => void
-) => {
-  const element = document.getElementById(elementId);
-  if (element) {
-    
-    if (revealedTexts.has(elementId)) {
-      return;
-    }
-    
-    if (isHovered === elementId) {
- 
-      setIsHovered(null);
-    } else {
-     
-      scrambleText('', actualText, element);
-      setIsHovered(elementId);
-      
-    
-      setTimeout(() => {
-        setRevealedTexts(new Set([...revealedTexts, elementId]));
-      }, actualText.length * 15); 
-    }
-  }
-};
