@@ -8,6 +8,7 @@ import Hack2023 from '@/public/Hack2023.svg';
 import Hack2024 from '@/public/Hack2024.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initPastHackathonsAnimations } from '../animations/pastHackathonsAnimations';
 
 export default function PastHackathons() {
@@ -85,6 +86,181 @@ export default function PastHackathons() {
               }}
             >
               <div className="absolute inset-0 bg-black/50 z-0"></div>
+              
+              {/* Floating decorative images - only on first slide */}
+              {index === 0 && (
+                <>
+                  <div className="absolute top-20 left-10 md:left-20 z-10 animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/duck.png"
+                      alt="Floating duck"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 lg:w-56 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-40 right-10 md:right-20 z-10 animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/frog.png"
+                      alt="Floating frog"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 lg:w-56 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-32 left-16 md:left-32 z-10 animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/mascot.gif"
+                      alt="Floating mascot"
+                      width={256}
+                      height={256}
+                      className="w-36 md:w-48 lg:w-64 h-auto opacity-90"
+                    />
+                  </div>
+                </>
+              )}
+              
+              {/* Floating decorative images - only on second slide */}
+              {index === 1 && (
+                <>
+                  <div className="absolute top-16 left-12 md:left-24 z-10 animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/Title-Gold.svg"
+                      alt="Title Gold"
+                      width={288}
+                      height={100}
+                      className="w-40 md:w-56 lg:w-72 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-1/3 right-12 md:right-24 z-10 animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Mascot.svg"
+                      alt="Mascot"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-44 lg:w-56 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-24 left-20 md:left-36 z-10 animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/hero-ecsw.svg"
+                      alt="Hero ECSW"
+                      width={320}
+                      height={120}
+                      className="w-48 md:w-64 lg:w-80 h-auto opacity-90"
+                    />
+                  </div>
+                </>
+              )}
+              
+              {/* Floating decorative images - only on third slide */}
+              {index === 2 && (
+                <>
+                  <div className="absolute top-16 left-12 md:left-24 z-10 animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Rocket.webp"
+                      alt="Rocket"
+                      width={80}
+                      height={80}
+                      className="w-12 md:w-16 lg:w-20 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-1/3 right-12 md:right-24 z-10 animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/Pluwuto.png"
+                      alt="Pluwuto"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-44 lg:w-56 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-24 left-16 md:left-32 z-10 animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/hackutdix-nosponsortitle.png"
+                      alt="HackUTD IX No Sponsor Title"
+                      width={288}
+                      height={100}
+                      className="w-40 md:w-56 lg:w-72 h-auto opacity-90"
+                    />
+                  </div>
+                </>
+              )}
+              
+              {/* Floating decorative images - only on fourth slide */}
+              {index === 3 && (
+                <>
+                  <div className="absolute top-16 left-12 md:left-24 z-10 animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/WhiteAstro.svg"
+                      alt="White Astro"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 lg:w-48 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-1/3 right-12 md:right-24 z-10 animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Coaster Design.png"
+                      alt="Coaster Design"
+                      width={200}
+                      height={200}
+                      className="w-28 md:w-36 lg:w-44 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-24 left-16 md:left-32 z-10 animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/T Shirt.png"
+                      alt="T Shirt"
+                      width={280}
+                      height={280}
+                      className="w-36 md:w-48 lg:w-60 h-auto opacity-90"
+                    />
+                  </div>
+                </>
+              )}
+              
+              {/* Floating decorative images - only on fifth slide */}
+              {index === 4 && (
+                <>
+                  <div className="absolute top-16 left-12 md:left-24 z-10 animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Bobo.svg"
+                      alt="Bobo"
+                      width={200}
+                      height={200}
+                      className="w-28 md:w-36 lg:w-44 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-1/3 right-12 md:right-24 z-10 animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/ship.svg"
+                      alt="Ship"
+                      width={360}
+                      height={180}
+                      className="w-48 md:w-60 lg:w-72 h-auto opacity-90"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-24 left-16 md:left-32 z-10 animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/submarine.svg"
+                      alt="Submarine"
+                      width={330}
+                      height={165}
+                      className="w-44 md:w-56 lg:w-68 h-auto opacity-90"
+                    />
+                  </div>
+                </>
+              )}
               
               <div className="flex flex-col items-center relative z-10">
                 <Link href={hackathon.href} target="_blank" rel="noopener noreferrer">
