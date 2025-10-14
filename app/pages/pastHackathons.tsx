@@ -8,9 +8,8 @@ import Hack2023 from '@/public/Hack2023.svg';
 import Hack2024 from '@/public/Hack2024.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initPastHackathonsAnimations } from '../animations/pastHackathonsAnimations';
-import duck from '@/public/assets/horizontalScroll/duck.png';
-import frog from '@/public/assets/horizontalScroll/frog.png';
 
 export default function PastHackathons() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -93,16 +92,20 @@ export default function PastHackathons() {
                 <>
                   <div className="absolute top-20 left-10 md:left-20 z-10 animate-float-slow">
                     <Image
-                      src={duck}
+                      src="/assets/horizontalScroll/duck.png"
                       alt="Floating duck"
+                      width={224}
+                      height={224}
                       className="w-32 md:w-40 lg:w-56 h-auto opacity-90"
                     />
                   </div>
                   
                   <div className="absolute top-40 right-10 md:right-20 z-10 animate-float-medium">
                     <Image
-                      src={frog}
+                      src="/assets/horizontalScroll/frog.png"
                       alt="Floating frog"
+                      width={224}
+                      height={224}
                       className="w-32 md:w-40 lg:w-56 h-auto opacity-90"
                     />
                   </div>
