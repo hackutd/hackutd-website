@@ -1,7 +1,7 @@
 "use client";
 
 import Hero from "./components/hero";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import Intro from "./pages/intro";
 import OpenSource from "./pages/openSource";
 import PastHackathons from "./pages/pastHackathons";
