@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import StarryBackground from "../components/StarryBackground";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import { initHeroAnimations } from "../animations/heroAnimations";
 
 export default function Hero() {
