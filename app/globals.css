@@ -41,6 +41,19 @@
     clip-path: inset(50% 0 0 0); /* Shows only bottom half of the blurred glow */
     pointer-events: none;
   }
+
+  /* Floating animations for decorative images */
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+  }
+
+  .animate-float-fast {
+    animation: float-fast 5s ease-in-out infinite;
+  }
 }
 
 html, body {
@@ -204,16 +217,4 @@ html, body {
   80% {
     transform: translateY(-30px) translateX(-5px) rotate(-5deg);
   }
-}
-
-.animate-float-slow {
-  animation: float-slow 8s ease-in-out infinite;
-}
-
-.animate-float-medium {
-  animation: float-medium 6s ease-in-out infinite;
-}
-
-.animate-float-fast {
-  animation: float-fast 5s ease-in-out infinite;
 }

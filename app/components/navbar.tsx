@@ -174,9 +174,6 @@ export function Navbar({
               <Link href="https://twitter.com/hackutd" target="_blank" className="hover:text-purple-300" aria-label="Twitter (X)">
                  <FaXTwitter className="h-5 w-5" />
               </Link>
-              <Link href = "https://www.tiktok.com/@hackutd" target="_blank" className="hover:text-purple-300" aria-label="Tiktok">
-                <FaTiktok className="h-5 w-5" />
-              </Link>
                 <Link href="https://linkedin.com/company/hackutd" target="_blank" className="hover:text-purple-300">
                 <Linkedin className="h-5 w-5" />
               </Link>
