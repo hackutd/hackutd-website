@@ -4,7 +4,8 @@ import React from "react";
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, type LucideIcon } from "lucide-react";
+import { Menu, Instagram, Linkedin, type LucideIcon } from "lucide-react";
+import { FaXTwitter, FaTiktok } from "react-icons/fa6";
 import { useState } from "react";
 
 function cn(...classes: (string | undefined | null | false)[]): string {
@@ -144,7 +145,7 @@ export function Navbar({
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-6 text-sm text-gray-300 md:flex">
+          <nav className="hidden md:flex items-center gap-8 text-sm text-gray-300 absolute left-1/2 transform -translate-x-1/2">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -168,17 +169,18 @@ export function Navbar({
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex">
-            <Button
-              asChild
-              className="bg-[#FF65BB] text-white font-medium rounded-lg px-6 py-2.5
-             hover:bg-[#FF4DAA] hover:shadow-md hover:scale-[1.02]
-             transition-all"
-            >
-              <Link href={ctaHref}>{ctaText}</Link>
-            </Button>
-          </div>
+          {/* Social Media Icons */}
+            <div className="hidden md:flex items-center gap-4 text-gray-300">
+              <Link href="https://twitter.com/hackutd" target="_blank" className="hover:text-purple-300" aria-label="Twitter (X)">
+                 <FaXTwitter className="h-5 w-5" />
+              </Link>
+                <Link href="https://linkedin.com/company/hackutd" target="_blank" className="hover:text-purple-300">
+                <Linkedin className="h-5 w-5" />
+              </Link>
+              <Link href="https://instagram.com/hackutd" target="_blank" className="hover:text-purple-300">
+                <Instagram className="h-5 w-5" />
+              </Link>
+            </div>
 
           {/* Mobile Nav */}
           <div className="md:hidden">
@@ -228,17 +230,7 @@ export function Navbar({
                 ))}
               </nav>
 
-              {/* CTA Button at Bottom */}
-              <div className="mt-auto border-t border-gray-800 p-4">
-                <Button
-                  asChild
-                  className="w-full bg-lime-400 text-black font-medium rounded-lg px-6 py-2.5
-                             hover:bg-lime-300 hover:shadow-md hover:scale-[1.02]
-                             transition-all"
-                >
-                  <Link href={ctaHref}>{ctaText}</Link>
-                </Button>
-              </div>
+              {/* CTA Button removed from mobile sheet */}
             </MobileSheet>
           </div>
         </div>
