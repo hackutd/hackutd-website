@@ -2,7 +2,7 @@
 "use client";
 import { useLayoutEffect, useRef } from "react";
 import hackScreenshot from "@/public/hackScreenshot.png";
-import juryScreenshot from "@/public/juryScreenshot.png";
+import juryScreenshot from "@/public/juryScreenshot2.png";
 import Image from "next/image";
 import Link from "next/link";
 import { initOpenSourceAnimations } from "../animations/openSourceAnimations";
@@ -85,7 +85,7 @@ export default function OpenSource() {
           >
             Our{" "}
             <span
-              className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-[#ffffff] to-[#ffe3f7] bg-clip-text text-transparent"
               style={{ WebkitTextFillColor: "transparent" }}
             >
               open source
@@ -124,7 +124,7 @@ export default function OpenSource() {
               >
                 <div
                   ref={addImageRef}
-                  className="w-full h-[140px] sm:h-[160px] md:h-[200px] lg:h-[40vh] lg:w-[34vw] relative"
+                  className="w-full h-[40vh] lg:w-[38vw] relative"
                 >
                   <Image
                     src={project.image}
