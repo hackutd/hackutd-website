@@ -7,16 +7,24 @@ export default function SponsorCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const sponsors = [
-    { name: "Snowflake", logo: "/logo.svg" },
-    { name: "Intel", logo: "/logo.svg" },
-    { name: "AWS", logo: "/logo.svg" },
-    { name: "Oracle", logo: "/logo.svg" },
-    { name: "SK Telecom", logo: "/logo.svg" },
-    { name: "NVIDIA", logo: "/logo.svg" },
-    { name: "Meta", logo: "/logo.svg" },
-    { name: "Google", logo: "/logo.svg" },
-    { name: "Microsoft", logo: "/logo.svg" },
-    { name: "Apple", logo: "/logo.svg" },
+    { name: "Capital One", logo: "/Logos/CapitalOne/CapitalOne Logo.png" },
+    { name: "CBRE", logo: "/Logos/CBRE/CBRE_green.png" },
+    { name: "Cognizant", logo: "/Logos/Cognizant/Cognizant Logo.png" },
+    { name: "EOG", logo: "/Logos/EOG/EOG Logo.png" },
+    { name: "Goldman", logo: "/Logos/Goldman/GS slide 1 (1).png" },
+    { name: "NMC^2", logo: "/Logos/NMC^2/NMC2 Logo from HackUTD.png" },
+    { name: "PNC", logo: "/Logos/PNC/PNC Bank_OrangeGray_650x200 1.png" },
+    { name: "Scale", logo: "/Logos/Scale/scale logo.png" },
+    { name: "State Farm", logo: "/Logos/Statefarm/SF Logo Horizontal.png" },
+    { name: "T-Mobile", logo: "/Logos/T-Mobile/T-Badge_Icon_Ltd-Use_RGB_K_2025-03-06.png" },
+    { name: "Toyota", logo: "/Logos/Toyota/Toyota Logo 2.png" },
+    { name: "Nord_Protect", logo: "/Logos/Nord/Color=Orange, Type=Horizontal, On=Black.png" },
+    { name: "Nord_Incogni", logo: "/Logos/Nord/Incogni_logo_white_better_quality.png" },
+    { name: "Nord_Pass", logo: "/Logos/Nord/NordPass-white-horizontal (2).png" },
+    { name: "Nord_Saily", logo: "/Logos/Nord/saily-logo-white (3).png" },
+    { name: "Nord_VPN", logo: "/Logos/Nord/NordVPN_Logo_RGB_Primary_Blue_White (1).png" },
+    
+
   ];
 // Duplicate the sponsors array for seamless infinite scroll
   const duplicatedSponsors = [...sponsors, ...sponsors, ...sponsors];
