@@ -8,6 +8,7 @@ export default function SponsorCarousel() {
 
   const sponsors = [
     { name: "Capital One", logo: "/Logos/CapitalOne/cap1.png", url: "https://www.capitalone.com/" },
+    { name: "NVIDIA", logo: "/Logos/NVIDIA/nvidia.png", url: "https://www.nvidia.com/en-us/" },
     { name: "CBRE", logo: "/Logos/CBRE/CBRE_green.png", url: "https://www.cbre.com/" },
     { name: "Cognizant", logo: "/Logos/Cognizant/CognizantLogo.png", url: "https://www.cognizant.com/us/en" },
     { name: "EOG", logo: "/Logos/EOG/EOGLogo.png", url: "https://www.eogresources.com/" },
