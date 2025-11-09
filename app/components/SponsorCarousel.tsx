@@ -81,8 +81,8 @@ export default function SponsorCarousel() {
       }}
     >
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-center mb-12">
-          <span className="inline-block px-4 py-1.5 text-xs md:text-sm font-medium text-gray-400 border border-gray-700 rounded-full uppercase tracking-wider">
+        <div className="flex justify-center md:mb-4">
+          <span className="inline-block px-4 py-1.5 text-sm md:text-md font-medium text-gray-400 border border-gray-700 rounded-full uppercase tracking-wider">
             Past Sponsors
           </span>
         </div>
