@@ -310,7 +310,7 @@ export default function Intro() {
       ) : (
         // Side-by-side layout for team slides
         <div ref={contentRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-8 md:mb-16">
-          <div className="text-center md:text-left order-1">
+          <div className="text-center md:text-left order-2 md:order-1">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               <span className="bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
                 {currentTeamSlide.title}
@@ -319,9 +319,9 @@ export default function Intro() {
             <p className="text-gray-300 leading-relaxed text-sm md:text-base">
               {currentTeamSlide.description}
             </p>
-      </div>
+          </div>
 
-          <div className="flex items-center order-2">
+          <div className="flex items-center order-1 md:order-2">
             <div className="relative rounded-lg h-[30vh] md:h-[40vh] w-full shadow-2xl overflow-hidden">
             <Image
                 src={currentTeamSlide.groupPhoto}
@@ -339,7 +339,7 @@ export default function Intro() {
       <button
         onClick={prevSlide}
         disabled={isAnimating}
-        className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
+        className={`absolute left-4 top-1 md:top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
           isAnimating 
             ? 'bg-gray-500/50 cursor-not-allowed' 
             : 'bg-black/70 hover:bg-black/90 hover:scale-110 active:scale-95'
@@ -354,7 +354,7 @@ export default function Intro() {
       <button
         onClick={nextSlide}
         disabled={isAnimating}
-        className={`absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
+        className={`absolute right-4 top-1 md:top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
           isAnimating 
             ? 'bg-gray-500/50 cursor-not-allowed' 
             : 'bg-black/70 hover:bg-black/90 hover:scale-110 active:scale-95'
@@ -378,7 +378,7 @@ export default function Intro() {
                 <div key={index} className="text-center group">
                   <div className="relative w-24 h-24 md:w-28 md:h-28 mx-auto mb-2 rounded-full overflow-hidden border-2 border-transparent hover:border-purple-500 transition-colors duration-300">
                     {member.hasImage && member.imagePath ? (
-            <Image
+                      <Image
                         src={member.imagePath}
                         alt={member.fullName}
                         fill
@@ -400,7 +400,7 @@ export default function Intro() {
                     ) : (
                       <div className="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-lg md:text-xl font-black tracking-wider">
                         {member.firstName ? member.firstName[0].toUpperCase() : "?"}
-          </div>
+                      </div>
                     )}
                     
                     {/* Social Media Overlay */}
@@ -455,7 +455,7 @@ export default function Intro() {
       )}
 
       {/* Dot Navigation - Bottom Center */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-9 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
         {teamSlides.map((_, index) => (
           <button
             key={index}
