@@ -73,7 +73,13 @@ export default function SponsorCarousel() {
   }, []);
 
   return (
-    <section className="relative py-16 md:py-24 bg-black overflow-hidden">
+    <section 
+      className="relative py-16 md:py-24 bg-black overflow-hidden"
+      style={{
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 45%, black 65%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 45%, black 65%, transparent 100%)',
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-center mb-12">
           <span className="inline-block px-4 py-1.5 text-xs md:text-sm font-medium text-gray-400 border border-gray-700 rounded-full uppercase tracking-wider">

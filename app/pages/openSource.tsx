@@ -72,9 +72,14 @@ export default function OpenSource() {
   return (
     <section
       ref={sectionRef}
+      style={{
+      maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 8%, rgba(0,0,0,0.7) 15%, black 25%)',
+      WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 8%, rgba(0,0,0,0.7) 15%, black 25%)',
+
+    }}
       className="relative isolate w-full min-h-screen bg-gradient-to-br from-[#D15CD8] via-[#F75371] via-[#DDDDDD] to-[#DDDDDD] py-8 md:py-16 px-4 md:px-8"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mt-50 md:mt-10 mx-auto">
         <div
           ref={headerRef}
           className="relative z-[999] text-center mb-8 md:mb-16 space-y-3 md:space-y-4"
