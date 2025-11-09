@@ -339,7 +339,7 @@ export default function Intro() {
       <button
         onClick={prevSlide}
         disabled={isAnimating}
-        className={`absolute left-4 top-1 md:top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
+        className={`absolute left-4 top-1/3 md:top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
           isAnimating 
             ? 'bg-gray-500/50 cursor-not-allowed' 
             : 'bg-black/70 hover:bg-black/90 hover:scale-110 active:scale-95'
@@ -354,7 +354,7 @@ export default function Intro() {
       <button
         onClick={nextSlide}
         disabled={isAnimating}
-        className={`absolute right-4 top-1 md:top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
+        className={`absolute right-4 top-1/3 md:top-1/2 transform -translate-y-8 w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 ${
           isAnimating 
             ? 'bg-gray-500/50 cursor-not-allowed' 
             : 'bg-black/70 hover:bg-black/90 hover:scale-110 active:scale-95'
