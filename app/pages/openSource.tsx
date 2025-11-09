@@ -77,11 +77,11 @@ export default function OpenSource() {
       <div className="max-w-7xl mx-auto">
         <div
           ref={headerRef}
-          className="relative z-[999] text-center mb-8 md:mb-16 space-y-3 md:space-y-4 p-4"
+          className="relative z-[999] text-center mb-8 md:mb-16 space-y-3 md:space-y-4"
         >
           <h2
             ref={titleRef}
-            className="block text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 !opacity-100 !visible"
+            className="block text-3xl mb-6 md:text-4xl lg:text-5xl font-bold text-gray-800 !opacity-100 !visible"
           >
             Our{" "}
             <span
@@ -95,7 +95,7 @@ export default function OpenSource() {
 
           <p
             ref={subtitleRef}
-            className="block text-gray-800 text-sm md:text-base mb-4 md:mb-6 px-4 !opacity-100 !visible"
+            className="block text-gray-800 text-md md:text-base mb-4 md:mb-6 !opacity-100 !visible"
           >
             As active participants in the hackathon community, we've built
             open-source tools to support and empower other organizers.
