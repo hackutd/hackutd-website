@@ -78,7 +78,7 @@ export default function SponsorCarousel() {
 
           <div
             ref={scrollRef}
-            className="flex gap-12 md:gap-16 overflow-x-hidden scrollbar-hide py-8 md:py-12"
+            className="flex gap-2 md:gap-16 overflow-x-hidden scrollbar-hide py-8 md:py-12"
             style={{ scrollBehavior: "auto" }}
           >
             {duplicatedSponsors.map((sponsor, index) => (
@@ -87,7 +87,7 @@ export default function SponsorCarousel() {
                 className="flex-shrink-0 flex items-center justify-center group"
               >
                 <div className="relative w-40 md:w-48 h-24 md:h-32 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-                  <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-[120px] md:w-full h-full flex items-center justify-center">
                     <Image
                       src={sponsor.logo}
                       alt={sponsor.name}
