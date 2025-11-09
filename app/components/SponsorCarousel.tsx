@@ -74,7 +74,7 @@ export default function SponsorCarousel() {
 
   return (
     <section 
-      className="relative py-16 md:py-24 bg-black overflow-hidden"
+      className="relative py-12 md:py-6 mb-6 bg-black overflow-hidden"
       style={{
         maskImage: 'linear-gradient(to bottom, transparent 0%, black 45%, black 65%, transparent 100%)',
         WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 45%, black 65%, transparent 100%)',
