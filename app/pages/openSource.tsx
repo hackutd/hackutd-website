@@ -72,7 +72,7 @@ export default function OpenSource() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate min-h-screen bg-gradient-to-br from-[#D15CD8] via-[#F75371] via-[#DDDDDD] to-[#DDDDDD] py-8 md:py-16 px-4 md:px-8"
+      className="relative isolate w-full min-h-screen bg-gradient-to-br from-[#D15CD8] via-[#F75371] via-[#DDDDDD] to-[#DDDDDD] py-8 md:py-16 px-4 md:px-8"
     >
       <div className="max-w-7xl mx-auto">
         <div
@@ -124,7 +124,7 @@ export default function OpenSource() {
               >
                 <div
                   ref={addImageRef}
-                  className="w-full h-[40vh] lg:w-[38vw] relative"
+                  className="w-full h-[30vh] md:h-[40vh] lg:w-[38vw] relative"
                 >
                   <Image
                     src={project.image}
@@ -137,16 +137,16 @@ export default function OpenSource() {
                 </div>
               </Link>
 
-              <div className="p-4 md:p-6 h-auto lg:h-[17vh]">
+              <div className="py-3 md:p-6 h-auto lg:h-[17vh]">
                 <h3
                   ref={addTitleRef}
-                  className="text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white mb-2 text-center lg:text-left"
+                  className="text-xl lg:text-lg xl:text-xl font-bold text-white mb-2 text-center lg:text-left"
                 >
                   {project.title}
                 </h3>
                 <p
                   ref={addDescRef}
-                  className="text-[10px] md:text-xs lg:text-sm text-gray-300 leading-relaxed text-center lg:text-left"
+                  className="text-sm md:text-xs lg:text-sm text-gray-300 leading-relaxed text-center lg:text-left"
                 >
                   {project.description}
                 </p>
