@@ -66,7 +66,8 @@ export default function PastHackathons() {
       >
         Oh how far we&apos;ve come...
       </h1>
-      <h3 className="text-center mb-4 text-sm md:text-base px-4">Scroll to see our past hackathons!</h3>
+      <h3 className="text-center mb-4 text-sm md:text-base px-4 hidden md:block">Scroll to see our past hackathons!</h3>
+      <h3 className="text-center mb-4 text-sm md:text-base px-4 block md:hidden">See our past hackathons!</h3>
 
       <section
         ref={sectionRef}
@@ -344,8 +345,7 @@ export default function PastHackathons() {
 
       {/* Mobile: simple list (no GSAP) */}
       <div className="lg:hidden w-full max-w-7xl mx-auto px-4 md:px-8 py-4 mb-28">
-        <h4 className="text-center text-xl md:text-2xl font-semibold mb-6 md:mb-8">All HackUTD Badges</h4>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 place-items-center">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-4 md:gap-8 place-items-center">
           {hackathons.map((hackathon, index) => (
             <div key={index} className="font-DM-Sans text-center items-center flex flex-col">
               <Link href={hackathon.href} target="_blank" rel="noopener noreferrer">
