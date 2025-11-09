@@ -277,7 +277,11 @@ export default function Intro() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen p-4 md:p-16 bg-black text-white overflow-hidden"
+      className="relative min-h-screen p-4 pb-32 md:pb-0 md:p-16 bg-black text-white overflow-hidden"
+      style={{
+        maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+      }}
     >
 
       {/* Main Content */}
@@ -455,7 +459,7 @@ export default function Intro() {
       )}
 
       {/* Dot Navigation - Bottom Center */}
-      <div className="absolute bottom-9 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-20 md:bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
         {teamSlides.map((_, index) => (
           <button
             key={index}
