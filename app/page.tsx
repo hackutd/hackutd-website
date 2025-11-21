@@ -28,18 +28,18 @@ export default function Home() {
             />
           </div>
           <div className="pt-16">
-            {/* Add padding to prevent content from being hidden under the navbar */}
             <div id="hero">
               <Hero />
             </div>
-            <div id="intro">
+            <div id="intro" className="bg-black">
               <div className="my-0" />
               
               <Intro />
-              <SponsorCarousel />
+              <div className="bg-black" style={{ backgroundColor: '#000000' }}>
+                <SponsorCarousel />
+              </div>
             </div>
-            <div className="my-0" />
-            <div id="past">
+            <div id="past" className="bg-black">
               <PastHackathons />
             </div>
             <div className="my-16" />

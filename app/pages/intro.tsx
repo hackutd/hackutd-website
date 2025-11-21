@@ -279,8 +279,7 @@ export default function Intro() {
       ref={sectionRef}
       className="relative min-h-screen p-4 pb-32 md:pb-0 md:p-16 bg-black text-white overflow-hidden"
       style={{
-        maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-        WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+        backgroundColor: '#000000',
       }}
     >
 
