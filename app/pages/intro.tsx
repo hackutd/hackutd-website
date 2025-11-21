@@ -5,10 +5,10 @@ import Image from "next/image";
 export default function Intro() {
   return (
     <section
-      className="relative min-h-screen p-8 md:p-16 bg-black text-white overflow-hidden"
+      className="relative min-h-screen p-8 md:p-16 pb-20 md:pb-24 bg-black text-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-stretch">
 
           <div className="flex flex-col space-y-6 h-full">
             <h2 className="text-3xl md:text-5xl font-bold font-gilroy">
@@ -20,12 +20,13 @@ export default function Intro() {
               We host HackUTD, North America's largest hackathon. We also assist with other hackathons at UTD, and host helpful workshops that anyone can attend. Regardless of what we're working on, we aim to make our hackathons accessible and open to everyone. We inspire students to innovate and learn new technologies through hackathons, 24-hour events with challenges, free food & merch, and fun games & activities.
             </p>
 
-            <div className="w-full h-80 md:h-96 bg-gray-800 rounded-lg flex-shrink-0 relative overflow-hidden">
+            <div className="w-full h-64 sm:h-80 md:h-96 bg-gray-800 rounded-lg flex-shrink-0 relative overflow-hidden">
               <Image
                 src="/Team.png"
                 alt="HackUTD Team"
                 fill
                 className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                 priority
               />
             </div>
@@ -34,12 +35,13 @@ export default function Intro() {
  
           <div className="flex flex-col space-y-6 h-full">
 
-            <div className="w-full h-80 md:h-96 bg-gray-800 rounded-lg flex-shrink-0 relative overflow-hidden">
+            <div className="w-full h-64 sm:h-80 md:h-96 bg-gray-800 rounded-lg flex-shrink-0 relative overflow-hidden">
               <Image
                 src="/assets/team/group/Directors.jpg"
                 alt="HackUTD Directors"
                 fill
                 className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                 priority
               />
             </div>

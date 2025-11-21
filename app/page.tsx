@@ -32,12 +32,8 @@ export default function Home() {
               <Hero />
             </div>
             <div id="intro" className="bg-black">
-              <div className="my-0" />
-              
               <Intro />
-              <div className="bg-black" style={{ backgroundColor: '#000000' }}>
-                <SponsorCarousel />
-              </div>
+              <SponsorCarousel />
             </div>
             <div id="past" className="bg-black">
               <PastHackathons />

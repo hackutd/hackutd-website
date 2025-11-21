@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { FaEnvelope } from "react-icons/fa";
 
 export default function SponsorCarousel() {
   const scrollRefTop = useRef<HTMLDivElement>(null);
@@ -92,7 +93,7 @@ export default function SponsorCarousel() {
 
   return (
     <section 
-      className="relative py-8 md:py-12 mb-0 bg-black overflow-hidden"
+      className="relative py-8 md:py-12 pb-20 md:pb-24 mb-0 bg-black overflow-hidden"
       style={{
         backgroundColor: '#000000',
         zIndex: 10,
@@ -101,7 +102,7 @@ export default function SponsorCarousel() {
         marginBottom: 0,
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8" style={{ backgroundColor: '#000000' }}>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-20" style={{ backgroundColor: '#000000' }}>
         <div className="flex justify-center mb-6 md:mb-8">
           <h2
             className="font-inter text-xl md:text-2xl text-center font-medium text-white/60 px-4 tracking-wider uppercase"
@@ -110,7 +111,6 @@ export default function SponsorCarousel() {
           </h2>
         </div>
 
-        {/* Top Row - Scrolls Left */}
         <div className="relative mb-4 md:mb-6">
           <div className="absolute left-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-r from-black via-black to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-l from-black via-black to-transparent z-10 pointer-events-none" />
@@ -149,7 +149,6 @@ export default function SponsorCarousel() {
           </div>
         </div>
 
-        {/* Bottom Row - Scrolls Right */}
         <div className="relative mt-4 md:mt-6">
           <div className="absolute left-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-r from-black via-black to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-l from-black via-black to-transparent z-10 pointer-events-none" />
@@ -188,8 +187,7 @@ export default function SponsorCarousel() {
           </div>
         </div>
 
-        {/* Sponsorship CTA */}
-        <div className="mt-12 md:mt-16 flex flex-col items-center">
+        <div className="mt-12 md:mt-16 flex flex-col items-center relative z-40">
           <div className="max-w-2xl text-center px-4">
             <h3
               className="font-inter text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent"
@@ -202,24 +200,35 @@ export default function SponsorCarousel() {
             </p>
             <a
               href="mailto:hello@hackutd.co?subject=HackUTD Sponsorship Inquiry&body="
-              className="inline-block px-6 py-3 rounded-full font-medium text-sm md:text-base transition-all duration-300 hover:scale-105"
+              className="inline-block px-6 py-3 rounded-full font-medium text-sm md:text-base transition-all duration-300 hover:scale-105 relative z-50"
               style={{
                 background: 'linear-gradient(to right, #FF56D6, #FF9167)',
                 color: '#FFFFFF',
                 boxShadow: '0 4px 15px rgba(255, 86, 214, 0.3)',
+                filter: 'brightness(1)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 86, 214, 0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(255, 86, 214, 0.8), 0 0 40px rgba(255, 86, 214, 0.5)';
+                e.currentTarget.style.filter = 'brightness(1.2)';
+                e.currentTarget.style.background = 'linear-gradient(to right, #FF6FE5, #FFA67F)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.boxShadow = '0 4px 15px rgba(255, 86, 214, 0.3)';
+                e.currentTarget.style.filter = 'brightness(1)';
+                e.currentTarget.style.background = 'linear-gradient(to right, #FF56D6, #FF9167)';
               }}
             >
-              Contact Industry Team
+              <span className="flex items-center justify-center gap-2">
+                Get in Touch
+                <FaEnvelope className="w-4 h-4" />
+              </span>
             </a>
           </div>
         </div>
       </div>
+      
+      <div className="absolute bottom-0 left-0 right-0 h-48 md:h-64 bg-gradient-to-b from-transparent via-black/40 to-black pointer-events-none z-30" />
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-pink-500/70 to-transparent pointer-events-none z-30 shadow-[0_0_20px_rgba(255,86,214,0.5)]" />
 
       <style jsx>{`
         .scrollbar-hide::-webkit-scrollbar {

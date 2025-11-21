@@ -23,7 +23,6 @@ export default function Hero() {
       <Stars speed={1000} />
       <div className="absolute top-1/3 left-0 right-0 transform -translate-y-1/2 z-10">
         <div className="flex flex-col md:flex-row items-center justify-center space-x-4 px-4">
-          {/* Logo */}
           <Image 
             src="/logo.svg" 
             alt="HackUTD Logo" 
@@ -32,7 +31,6 @@ export default function Hero() {
             className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mb-2 md:mb-0"
           />
 
-          {/* Text Section */}
           <div className="font-['CeraPro']">
             <p className="text-base md:text-md font-medium text-white ml-1">We are</p>
             <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[6rem] font-bold leading-none">
