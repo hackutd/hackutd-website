@@ -73,12 +73,12 @@ function MobileSheet({
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-50 bg-black/50"
+            className="fixed inset-0 z-50 bg-black/0"
             onClick={() => setIsOpen(false)}
           />
 
           {/* Sheet */}
-          <div className="fixed right-0 top-0 z-50 h-full w-64 liquid-glass border-l border-gray-800 flex flex-col">
+          <div className="mt-20 fixed right-0 top-0 z-50 h-fit w-40 liquid-glass-header border-l border-gray-800 rounded-l-3xl shadow-lg flex flex-col">
             {children}
           </div>
         </>
@@ -125,7 +125,7 @@ export function Navbar({
   return (
     <header className="sticky top-0 z-50 p-4 font-['CeraPro']">
       <div className={`container mx-auto ${containerMaxWidth}`}>
-        <div className="flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
+        <div className="hidden md:flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-1.5">
             {logoSrc && (
@@ -181,8 +181,26 @@ export function Navbar({
                 <Instagram className="h-5 w-5" />
               </Link>
             </div>
-
-          {/* Mobile Nav */}
+        </div>
+        {/* Mobile Navbar */}
+        <div className="md:hidden flex h-14 items-center justify-between px-6 bg-black rounded-full">
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center gap-1.5">
+            {logoSrc && (
+              <Image
+                src={logoSrc || "/placeholder.svg"}
+                alt={`${brandName} logo`}
+                width={logoWidth}
+                height={logoHeight}
+                className={`h-${Math.ceil(logoHeight / 4)} w-${Math.ceil(
+                  logoWidth / 4
+                )}`}
+              />
+            )}
+            <span className="font-semibold tracking-wide text-white">
+              {brandName}
+            </span>
+          </Link>
           <div className="md:hidden">
             <MobileSheet
               trigger={
@@ -196,24 +214,8 @@ export function Navbar({
                 </Button>
               }
             >
-              {/* Brand Header */}
-              <div className="flex items-center gap-1.5 px-4 py-4 border-b border-gray-800">
-                {logoSrc && (
-                  <Image
-                    src={logoSrc || "/placeholder.svg"}
-                    alt={`${brandName} logo`}
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                )}
-                <span className="font-semibold tracking-wide text-white text-lg">
-                  {brandName}
-                </span>
-              </div>
-
               {/* Nav Links */}
-              <nav className="flex flex-col gap-1 mt-2 text-gray-200">
+              <nav className="flex flex-col gap-1 mt-2 text-gray-200 items-end">
                 {links.map((link) => (
                   <Link
                     key={link.href}
