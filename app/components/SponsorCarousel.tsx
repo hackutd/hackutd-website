@@ -201,7 +201,7 @@ export default function SponsorCarousel() {
               Interested in sponsoring HackUTD for our next hackathon and beyond? Get in touch with our Industry Team and learn how supporting HackUTD will benefit you!
             </p>
             <a
-              href="mailto:industry@hackutd.co"
+              href="mailto:hello@hackutd.co?subject=HackUTD Sponsorship Inquiry&body="
               className="inline-block px-6 py-3 rounded-full font-medium text-sm md:text-base transition-all duration-300 hover:scale-105"
               style={{
                 background: 'linear-gradient(to right, #FF56D6, #FF9167)',
