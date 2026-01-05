@@ -194,7 +194,7 @@ export function Navbar({
               onClick={() => setIsMobileNavOpen(false)}
             />
             {/* Sheet */}
-            <div className="mt-20 fixed right-0 top-0 z-50 h-fit w-40 liquid-glass-header !bg-black/30 border-l border-gray-800 rounded-l-3xl shadow-lg flex flex-col">
+            <div className="mt-20 fixed right-2 top-0 z-50 h-fit w-40 liquid-glass-header !bg-black/30 border-l border-gray-800 rounded-3xl shadow-lg flex flex-col">
               {/* Nav Links */}
               <nav className="flex flex-col gap-1 mt-2 text-gray-200 items-end">
                 {links.map((link) => (
