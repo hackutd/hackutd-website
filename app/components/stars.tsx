@@ -18,7 +18,7 @@ interface StarsProps {
 }
 
 function generateStar(resetZ = false): Star {
-  const spread = 1.5; // distributes stars wider beyond screen edges
+  const spread = window.innerWidth < 768 ? 2.5 : 0.8; // wider spread on mobile, narrower on desktop (it works don't touch it)
   return {
     x: (Math.random() - 0.5) * window.innerWidth * spread,
     y: (Math.random() - 0.5) * window.innerHeight * spread,
