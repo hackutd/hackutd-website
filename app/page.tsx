@@ -1,6 +1,6 @@
 "use client";
 
-import Hero from "./components/hero";
+import Hero from "./pages/hero";
 import Navbar from "./components/navbar";
 import Intro from "./pages/intro";
 import OpenSource from "./pages/openSource";
@@ -28,7 +28,7 @@ export default function Home() {
             />
           </div>
           <div className="pt-16">
-            <div id="hero">
+            <div id="hero" className="-mb-1">
               <Hero />
             </div>
             <div id="intro" className="bg-black">
