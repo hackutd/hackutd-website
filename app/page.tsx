@@ -1,6 +1,6 @@
 "use client";
 
-import Hero from "./components/hero";
+import Hero from "./pages/hero";
 import Navbar from "./components/navbar";
 import Intro from "./pages/intro";
 import OpenSource from "./pages/openSource";
@@ -28,18 +28,14 @@ export default function Home() {
             />
           </div>
           <div className="pt-16">
-            {/* Add padding to prevent content from being hidden under the navbar */}
-            <div id="hero">
+            <div id="hero" className="-mb-1">
               <Hero />
             </div>
-            <div id="intro">
-              <div className="my-0" />
-              
+            <div id="intro" className="bg-black">
               <Intro />
               <SponsorCarousel />
             </div>
-            <div className="my-0" />
-            <div id="past">
+            <div id="past" className="bg-black">
               <PastHackathons />
             </div>
             <div className="my-16" />

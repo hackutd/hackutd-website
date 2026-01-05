@@ -56,37 +56,6 @@ function Button({
   );
 }
 
-function MobileSheet({
-  children,
-  trigger,
-}: {
-  children: React.ReactNode;
-  trigger: React.ReactNode;
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <>
-      <div onClick={() => setIsOpen(true)}>{trigger}</div>
-
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 z-50 bg-black/50"
-            onClick={() => setIsOpen(false)}
-          />
-
-          {/* Sheet */}
-          <div className="fixed right-0 top-0 z-50 h-full w-64 liquid-glass border-l border-gray-800 flex flex-col">
-            {children}
-          </div>
-        </>
-      )}
-    </>
-  );
-}
-
 export interface NavLink {
   href: string;
   label: string;
@@ -122,10 +91,11 @@ export function Navbar({
   logoHeight = 20,
   containerMaxWidth = "max-w-4xl",
 }: NavbarProps) {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 p-4 font-['CeraPro']">
       <div className={`container mx-auto ${containerMaxWidth}`}>
-        <div className="flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
+        <div className="hidden md:flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-1.5">
             {logoSrc && (
@@ -181,39 +151,52 @@ export function Navbar({
                 <Instagram className="h-5 w-5" />
               </Link>
             </div>
-
-          {/* Mobile Nav */}
+        </div>
+        
+        {/* Mobile Navbar */}
+        <div className="md:hidden flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center gap-1.5">
+            {logoSrc && (
+              <Image
+                src={logoSrc || "/placeholder.svg"}
+                alt={`${brandName} logo`}
+                width={logoWidth}
+                height={logoHeight}
+                className={`h-${Math.ceil(logoHeight / 4)} w-${Math.ceil(
+                  logoWidth / 4
+                )}`}
+              />
+            )}
+            <span className="font-semibold tracking-wide text-white">
+              {brandName}
+            </span>
+          </Link>
           <div className="md:hidden">
-            <MobileSheet
-              trigger={
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="border-gray-700 bg-gray-900/80 text-gray-200 hover:bg-gray-800"
-                >
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              }
+            <Button
+              variant="outline"
+              size="icon"
+              className="border-gray-200/30 bg-gray-900/20 text-gray-200 hover:bg-gray-800"
+              onClick={() => setIsMobileNavOpen(true)}
             >
-              {/* Brand Header */}
-              <div className="flex items-center gap-1.5 px-4 py-4 border-b border-gray-800">
-                {logoSrc && (
-                  <Image
-                    src={logoSrc || "/placeholder.svg"}
-                    alt={`${brandName} logo`}
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                )}
-                <span className="font-semibold tracking-wide text-white text-lg">
-                  {brandName}
-                </span>
-              </div>
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </div>
+        </div>
 
+        {/* Mobile Sheet */}
+        {isMobileNavOpen && (
+          <>
+            {/* Backdrop to catch clicks*/}
+            <div
+              className="fixed inset-0 z-50 bg-black/0"
+              onClick={() => setIsMobileNavOpen(false)}
+            />
+            {/* Sheet */}
+            <div className="mt-20 fixed right-2 top-0 z-50 h-fit w-40 liquid-glass-header !bg-black/30 border-l border-gray-800 rounded-3xl shadow-lg flex flex-col">
               {/* Nav Links */}
-              <nav className="flex flex-col gap-1 mt-2 text-gray-200">
+              <nav className="flex flex-col gap-1 mt-2 text-gray-200 items-end">
                 {links.map((link) => (
                   <Link
                     key={link.href}
@@ -229,11 +212,9 @@ export function Navbar({
                   </Link>
                 ))}
               </nav>
-
-              {/* CTA Button removed from mobile sheet */}
-            </MobileSheet>
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </header>
   );

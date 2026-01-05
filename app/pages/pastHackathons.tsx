@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Hack2020 from '@/public/Hack2020.svg';
 import Hack2021 from '@/public/Hack2021.svg';
 import Hack2022 from '@/public/Hack2022.svg';
@@ -14,6 +14,7 @@ import { initPastHackathonsAnimations } from '../animations/pastHackathonsAnimat
 export default function PastHackathons() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const hackathons = [
     { 
@@ -58,15 +59,25 @@ export default function PastHackathons() {
     return cleanup;
   }, []);
 
+  // batch refresh after ALL images load
+  useEffect(() => {
+    if (imagesLoaded === hackathons.length) {
+      ScrollTrigger.refresh();
+    }
+  }, [imagesLoaded, hackathons.length]);
+
   return (
-    <div>
+    <div className="bg-black">
+      <div className="pt-12 md:pt-16 pb-8 md:pb-12 bg-black">
       <h1
         className="font-inter text-3xl md:text-5xl lg:text-[67px] text-center font-bold bg-clip-text text-transparent px-4"
         style={{ backgroundImage: 'linear-gradient(to bottom right, #FF56D6 0%, #FF7AA2 35%, #FF9167 70%)' }}
       >
         Oh how far we&apos;ve come...
       </h1>
-      <h3 className="text-center mb-4 text-sm md:text-base px-4">Scroll to see our past hackathons!</h3>
+        <h3 className="text-center mb-4 text-sm md:text-base px-4 hidden md:block text-white/80">Scroll to see our past hackathons!</h3>
+        <h3 className="text-center mb-4 text-sm md:text-base px-4 block md:hidden text-white/80">See our past hackathons!</h3>
+      </div>
 
       <section
         ref={sectionRef}
@@ -87,10 +98,10 @@ export default function PastHackathons() {
             >
               <div className="absolute inset-0 bg-black/50 z-0"></div>
               
-              {/* Floating decorative images - only on first slide */}
+             
               {index === 0 && (
                 <>
-                  <div className="absolute top-20 left-10 md:left-20 z-10">
+                  <div className="absolute top-[10%] left-[8%] z-10">
                     <div className="animate-float-slow">
                       <Image
                         src="/assets/horizontalScroll/duck.png"
@@ -102,7 +113,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute top-40 right-10 md:right-20 z-10">
+                  <div className="absolute top-[15%] right-[12%] z-10">
                     <div className="animate-float-medium">
                       <Image
                         src="/assets/horizontalScroll/frog.png"
@@ -114,7 +125,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-32 left-16 md:left-32 z-10">
+                  <div className="absolute bottom-[20%] left-[15%] z-10">
                     <div className="animate-float-fast">
                       <Image
                         src="/assets/horizontalScroll/mascot.gif"
@@ -125,13 +136,84 @@ export default function PastHackathons() {
                       />
                     </div>
                   </div>
+                  
+                  <div className="absolute top-[8%] left-[5%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-32 md:w-48 lg:w-64 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[25%] right-[8%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01071.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[35%] left-[45%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[55%] right-[35%] opacity-65" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-20 md:w-32 lg:w-44 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[18%] left-[8%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SK-DSC01976.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[25%] right-[6%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-20 md:w-32 lg:w-44 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[60%] left-[25%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-22 md:w-32 lg:w-40 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
                 </>
               )}
               
-              {/* Floating decorative images - only on second slide */}
+             
               {index === 1 && (
                 <>
-                  <div className="absolute top-16 left-12 md:left-24 z-10">
+                  
+                  <div className="absolute top-[12%] left-[10%] z-10">
                     <div className="animate-float-medium">
                       <Image
                         src="/assets/horizontalScroll/Title-Gold.svg"
@@ -143,7 +225,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute top-1/3 right-12 md:right-24 z-10">
+                  <div className="absolute top-[20%] right-[15%] z-10">
                     <div className="animate-float-slow">
                       <Image
                         src="/assets/horizontalScroll/Mascot.svg"
@@ -155,7 +237,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-24 left-20 md:left-36 z-10">
+                  <div className="absolute bottom-[22%] left-[12%] z-10">
                     <div className="animate-float-fast">
                       <Image
                         src="/assets/horizontalScroll/hero-ecsw.svg"
@@ -166,13 +248,85 @@ export default function PastHackathons() {
                       />
                     </div>
                   </div>
+                  
+                  
+                  <div className="absolute top-[10%] left-[6%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SK-DSC01986.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-32 md:w-48 lg:w-64 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[28%] right-[7%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099193.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[40%] left-[42%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[58%] right-[30%] opacity-65" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-20 md:w-32 lg:w-44 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[20%] left-[9%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[28%] right-[5%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[65%] left-[28%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-22 md:w-32 lg:w-40 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
                 </>
               )}
               
-              {/* Floating decorative images - only on third slide */}
+             
               {index === 2 && (
                 <>
-                  <div className="absolute top-16 left-12 md:left-24 z-10">
+                  
+                  <div className="absolute top-[8%] left-[12%] z-10">
                     <div className="animate-float-slow">
                       <Image
                         src="/assets/horizontalScroll/Rocket.webp"
@@ -184,7 +338,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute top-1/3 right-12 md:right-24 z-10">
+                  <div className="absolute top-[18%] right-[10%] z-10">
                     <div className="animate-float-medium">
                       <Image
                         src="/assets/horizontalScroll/Pluwuto.png"
@@ -196,7 +350,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-24 left-16 md:left-32 z-10">
+                  <div className="absolute bottom-[18%] left-[18%] z-10">
                     <div className="animate-float-fast">
                       <Image
                         src="/assets/horizontalScroll/hackutdix-nosponsortitle.png"
@@ -207,13 +361,83 @@ export default function PastHackathons() {
                       />
                     </div>
                   </div>
+                  
+                  
+                  <div className="absolute top-[12%] left-[5%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01202.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-32 md:w-48 lg:w-64 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[30%] right-[6%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[45%] left-[38%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[62%] right-[28%] opacity-65" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-20 md:w-32 lg:w-44 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[22%] left-[7%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SK-DSC01976.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[30%] right-[4%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[70%] left-[22%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-22 md:w-32 lg:w-40 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
                 </>
               )}
               
-              {/* Floating decorative images - only on fourth slide */}
               {index === 3 && (
                 <>
-                  <div className="absolute top-16 left-12 md:left-24 z-10">
+                  <div className="absolute top-[14%] left-[9%] z-10">
                     <div className="animate-float-medium">
                       <Image
                         src="/assets/horizontalScroll/WhiteAstro.svg"
@@ -225,7 +449,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute top-1/3 right-12 md:right-24 z-10">
+                  <div className="absolute top-[22%] right-[11%] z-10">
                     <div className="animate-float-slow">
                       <Image
                         src="/assets/horizontalScroll/Coaster Design.png"
@@ -237,7 +461,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-24 left-16 md:left-32 z-10">
+                  <div className="absolute bottom-[24%] left-[14%] z-10">
                     <div className="animate-float-fast">
                       <Image
                         src="/assets/horizontalScroll/T Shirt.png"
@@ -248,13 +472,83 @@ export default function PastHackathons() {
                       />
                     </div>
                   </div>
+            
+                  <div className="absolute top-[9%] left-[4%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SK-DSC01976.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-32 md:w-48 lg:w-64 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[32%] right-[5%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[48%] left-[40%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[65%] right-[32%] opacity-65" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-20 md:w-32 lg:w-44 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[19%] left-[6%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SK-DSC01986.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[32%] right-[3%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[72%] left-[26%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-22 md:w-32 lg:w-40 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
                 </>
               )}
               
-              {/* Floating decorative images - only on fifth slide */}
               {index === 4 && (
                 <>
-                  <div className="absolute top-16 left-12 md:left-24 z-10">
+                  
+                  <div className="absolute top-[11%] left-[11%] z-10">
                     <div className="animate-float-slow">
                       <Image
                         src="/assets/horizontalScroll/Bobo.svg"
@@ -266,7 +560,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute top-1/3 right-12 md:right-24 z-10">
+                  <div className="absolute top-[19%] right-[13%] z-10">
                     <div className="animate-float-medium">
                       <Image
                         src="/assets/horizontalScroll/ship.svg"
@@ -278,7 +572,7 @@ export default function PastHackathons() {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-24 left-16 md:left-32 z-10">
+                  <div className="absolute bottom-[21%] left-[16%] z-10">
                     <div className="animate-float-fast">
                       <Image
                         src="/assets/horizontalScroll/submarine.svg"
@@ -288,6 +582,76 @@ export default function PastHackathons() {
                         className="w-44 md:w-56 lg:w-68 h-auto opacity-90"
                       />
                     </div>
+                  </div>
+                
+                  <div className="absolute top-[7%] left-[3%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01071.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-32 md:w-48 lg:w-64 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[26%] right-[4%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[43%] left-[44%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[60%] right-[34%] opacity-65" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-20 md:w-32 lg:w-44 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[17%] left-[5%] opacity-55" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SK-DSC01986.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-28 md:w-40 lg:w-52 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute bottom-[34%] right-[2%] opacity-60" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-24 md:w-36 lg:w-48 h-auto rounded-lg shadow-2xl"
+                    />
+                  </div>
+                  
+                  <div className="absolute top-[68%] left-[24%] opacity-50" style={{ zIndex: 0 }}>
+                    <Image
+                      src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                      alt="Event photo"
+                      width={400}
+                      height={300}
+                      className="w-22 md:w-32 lg:w-40 h-auto rounded-lg shadow-2xl"
+                    />
                   </div>
                 </>
               )}
@@ -299,9 +663,7 @@ export default function PastHackathons() {
                     alt={hackathon.alt}
                     priority={index === 0}
                     className="w-48 md:w-64 lg:w-[18rem] h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
-                    onLoadingComplete={() => {
-                      try { ScrollTrigger.refresh(); } catch {}
-                    }}
+                    onLoadingComplete={() => {setImagesLoaded(prev => prev + 1);}}
                   />
                 </Link>
                 <p className="mt-4 md:mt-6 text-base md:text-lg text-white font-semibold drop-shadow-lg">{hackathon.label}</p>
@@ -311,55 +673,650 @@ export default function PastHackathons() {
 
           <article 
             className="min-w-[100vw] h-full grid place-items-center px-8 relative overflow-hidden"
-            style={{
-              backgroundImage: 'url(/hackutd-collage-photo.jpg)', 
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
           >
-            
-            <div className="absolute inset-0 bg-black/60 z-0"></div>
-            
-            <div className="w-full max-w-7xl mx-auto relative z-10 px-4">
-              <h4 className="text-center text-xl md:text-2xl font-semibold mb-6 md:mb-8 text-white drop-shadow-lg">All HackUTD Badges</h4>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 place-items-center">
-                {hackathons.map((hackathon, i) => (
-                  <div key={`all-${i}`} className="text-center">
-                    <Link href={hackathon.href} target="_blank" rel="noopener noreferrer">
-                      <Image
-                        src={hackathon.src}
-                        alt={hackathon.alt}
-                        className="w-20 md:w-28 h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
-                      />
-                    </Link>
-                    <p className="mt-2 md:mt-3 text-xs md:text-sm text-white font-medium drop-shadow-md">{hackathon.label}</p>
+            <div className="w-full max-w-7xl mx-auto relative z-10 px-4 py-12 md:py-16">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
+
+                <div className="text-center">
+                  <div className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                    10,000+
                   </div>
-                ))}
+                  <div className="text-xl md:text-2xl text-white font-medium">Total Hackers</div>
+                  <div className="text-sm md:text-base text-white/60 mt-2">Hosted across 5 years</div>
+                </div>
+                
+
+                <div className="text-center">
+                  <div className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                    $500K+
+                  </div>
+                  <div className="text-xl md:text-2xl text-white font-medium">In Prizes</div>
+                  <div className="text-sm md:text-base text-white/60 mt-2">Awarded to winners</div>
+                </div>
+                
+     
+                <div className="text-center">
+                  <div className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                    5
+                  </div>
+                  <div className="text-xl md:text-2xl text-white font-medium">Past 5 Years</div>
+                  <div className="text-sm md:text-base text-white/60 mt-2">2020 - 2024</div>
+                </div>
               </div>
             </div>
           </article>
         </div>
       </section>
 
-      {/* Mobile: simple list (no GSAP) */}
-      <div className="lg:hidden w-full max-w-7xl mx-auto px-4 md:px-8 py-4 mb-28">
-        <h4 className="text-center text-xl md:text-2xl font-semibold mb-6 md:mb-8">All HackUTD Badges</h4>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 place-items-center">
-          {hackathons.map((hackathon, index) => (
-            <div key={index} className="font-DM-Sans text-center items-center flex flex-col">
+      <div className="lg:hidden w-full bg-black">
+        {hackathons.map((hackathon, index) => (
+          <div
+            key={index}
+            className="min-h-[70vh] flex items-center justify-center relative overflow-hidden py-12"
+            style={{
+              backgroundImage: `url(${hackathon.backgroundImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          >
+            <div className="absolute inset-0 bg-black/50 z-0"></div>
+            
+            {index === 0 && (
+              <>
+               
+                <div className="absolute top-[10%] left-[8%] z-10">
+                  <div className="animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/duck.png"
+                      alt="Floating duck"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-[15%] right-[12%] z-10">
+                  <div className="animate-float-medium">
+                      <Image
+                      src="/assets/horizontalScroll/frog.png"
+                      alt="Floating frog"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 h-auto opacity-90"
+                    />
+                  </div>
+              </div>
+                
+                <div className="absolute bottom-[20%] left-[15%] z-10">
+                  <div className="animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/mascot.gif"
+                      alt="Floating mascot"
+                      width={256}
+                      height={256}
+                      className="w-36 md:w-44 h-auto opacity-90"
+                    />
+            </div>
+        </div>
+                
+                <div className="absolute top-[8%] left-[5%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-24 md:w-32 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[25%] right-[8%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01071.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[35%] left-[45%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[55%] right-[35%] opacity-65" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-20 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[18%] left-[8%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SK-DSC01976.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[25%] right-[6%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[60%] left-[25%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+              </>
+            )}
+            
+            {index === 1 && (
+              <>
+                <div className="absolute top-4 left-4 z-10">
+                  <div className="animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/Title-Gold.svg"
+                      alt="Title Gold"
+                      width={288}
+                      height={100}
+                      className="w-40 md:w-48 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Mascot.svg"
+                      alt="Mascot"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-4 left-4 z-10">
+                  <div className="animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/hero-ecsw.svg"
+                      alt="Hero ECSW"
+                      width={320}
+                      height={120}
+                      className="w-44 md:w-56 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-[15%] left-[2%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SK-DSC01986.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-24 md:w-32 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[12%] right-[2%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099193.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[50%] left-[1%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[45%] right-[1%] opacity-65" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-20 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[15%] left-[3%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[12%] right-[3%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[65%] left-[28%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+              </>
+            )}
+            
+            {index === 2 && (
+              <>
+                <div className="absolute top-4 left-4 z-10">
+                  <div className="animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Rocket.webp"
+                      alt="Rocket"
+                      width={80}
+                      height={80}
+                      className="w-12 md:w-16 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/Pluwuto.png"
+                      alt="Pluwuto"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-4 left-4 z-10">
+                  <div className="animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/hackutdix-nosponsortitle.png"
+                      alt="HackUTD IX No Sponsor Title"
+                      width={288}
+                      height={100}
+                      className="w-40 md:w-48 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-[15%] left-[2%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01202.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-24 md:w-32 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[12%] right-[2%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[50%] left-[1%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[45%] right-[1%] opacity-65" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-20 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[15%] left-[3%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SK-DSC01976.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[12%] right-[3%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[70%] left-[22%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+              </>
+            )}
+            
+            {index === 3 && (
+              <>
+                <div className="absolute top-4 left-4 z-10">
+                  <div className="animate-float-medium">
+                    <Image
+                      src="/assets/horizontalScroll/WhiteAstro.svg"
+                      alt="White Astro"
+                      width={224}
+                      height={224}
+                      className="w-32 md:w-40 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Coaster Design.png"
+                      alt="Coaster Design"
+                      width={200}
+                      height={200}
+                      className="w-28 md:w-36 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-4 left-4 z-10">
+                  <div className="animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/T Shirt.png"
+                      alt="T Shirt"
+                      width={280}
+                      height={280}
+                      className="w-36 md:w-44 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-[15%] left-[2%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SK-DSC01976.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-24 md:w-32 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[12%] right-[2%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[50%] left-[1%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[45%] right-[1%] opacity-65" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-20 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[15%] left-[3%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SK-DSC01986.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[12%] right-[3%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[72%] left-[26%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+              </>
+            )}
+            
+            {index === 4 && (
+              <>
+                <div className="absolute top-16 left-4 z-10">
+                  <div className="animate-float-slow">
+                    <Image
+                      src="/assets/horizontalScroll/Bobo.svg"
+                      alt="Bobo"
+                      width={200}
+                      height={200}
+                      className="w-28 md:w-36 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute top-1/3 right-4 z-10">
+                  <div className="animate-float-medium">
+                      <Image
+                      src="/assets/horizontalScroll/ship.svg"
+                      alt="Ship"
+                      width={360}
+                      height={180}
+                      className="w-44 md:w-56 h-auto opacity-90"
+                    />
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-24 left-8 z-10">
+                  <div className="animate-float-fast">
+                    <Image
+                      src="/assets/horizontalScroll/submarine.svg"
+                      alt="Submarine"
+                      width={330}
+                      height={165}
+                      className="w-40 md:w-52 h-auto opacity-90"
+                    />
+              </div>
+            </div>
+                
+                <div className="absolute top-[12%] left-[7%] opacity-60" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01071.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-24 md:w-32 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[22%] right-[8%] opacity-55" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099017.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-20 md:w-28 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[43%] left-[44%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099392.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[60%] right-[34%] opacity-65" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01448.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-20 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[24%] left-[6%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SK-DSC01986.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute bottom-[16%] right-[11%] opacity-65" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/P1099516.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-16 md:w-20 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                <div className="absolute top-[68%] left-[24%] opacity-50" style={{ zIndex: 0 }}>
+                  <Image
+                    src="/assets/horizontalScroll/eventPhotos/SMJ01583.jpg"
+                    alt="Event photo"
+                    width={400}
+                    height={300}
+                    className="w-18 md:w-24 h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+              </>
+            )}
+            
+            <div className="flex flex-col items-center relative z-10 px-4 py-8">
               <Link href={hackathon.href} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={hackathon.src}
                   alt={hackathon.alt}
-                  className="w-20 md:w-28 h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
+                  className="w-36 md:w-48 h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
                 />
               </Link>
-              <p className="mt-3 md:mt-4 text-xs md:text-sm">{hackathon.label}</p>
+              <p className="mt-4 text-base text-white font-semibold drop-shadow-lg">{hackathon.label}</p>
+            </div>
             </div>
           ))}
+        
+        <div className="min-h-[70vh] flex items-center justify-center px-4 py-12">
+          <div className="w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 gap-12">
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                  10,000+
+        </div>
+                <div className="text-xl md:text-2xl text-white font-medium">Total Hackers</div>
+                <div className="text-sm md:text-base text-white/60 mt-2">Hosted across 5 years</div>
+      </div>
+              
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                  $500K+
+                </div>
+                <div className="text-xl md:text-2xl text-white font-medium">In Prizes</div>
+                <div className="text-sm md:text-base text-white/60 mt-2">Awarded to winners</div>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-[#FF56D6] to-[#FF9167] bg-clip-text text-transparent">
+                  5
+                </div>
+                <div className="text-xl md:text-2xl text-white font-medium">Past 5 Years</div>
+                <div className="text-sm md:text-base text-white/60 mt-2">2020 - 2024</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   );
 }

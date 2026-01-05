@@ -72,16 +72,21 @@ export default function OpenSource() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate min-h-screen bg-gradient-to-br from-[#D15CD8] via-[#F75371] via-[#DDDDDD] to-[#DDDDDD] py-8 md:py-16 px-4 md:px-8"
+      style={{
+      maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 8%, rgba(0,0,0,0.7) 15%, black 25%)',
+      WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 8%, rgba(0,0,0,0.7) 15%, black 25%)',
+
+    }}
+      className="relative isolate w-full min-h-screen bg-gradient-to-br from-[#D15CD8] via-[#F75371] via-[#DDDDDD] to-[#DDDDDD] py-8 md:py-16 px-4 md:px-8"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mt-50 md:mt-20 mx-auto">
         <div
           ref={headerRef}
-          className="relative z-[999] text-center mb-8 md:mb-16 space-y-3 md:space-y-4 p-4"
+          className="relative z-[999] text-center mb-8 md:mb-16 space-y-3 md:space-y-4"
         >
           <h2
             ref={titleRef}
-            className="block text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 !opacity-100 !visible"
+            className="block text-3xl mb-6 md:text-4xl lg:text-5xl font-bold text-gray-800 !opacity-100 !visible"
           >
             Our{" "}
             <span
@@ -95,7 +100,7 @@ export default function OpenSource() {
 
           <p
             ref={subtitleRef}
-            className="block text-gray-800 text-sm md:text-base mb-4 md:mb-6 px-4 !opacity-100 !visible"
+            className="block text-gray-800 text-md md:text-base mb-4 md:mb-6 !opacity-100 !visible"
           >
             As active participants in the hackathon community, we've built
             open-source tools to support and empower other organizers.
@@ -124,7 +129,7 @@ export default function OpenSource() {
               >
                 <div
                   ref={addImageRef}
-                  className="w-full h-[40vh] lg:w-[38vw] relative"
+                  className="w-full h-[30vh] md:h-[40vh] lg:w-[38vw] relative"
                 >
                   <Image
                     src={project.image}
@@ -137,16 +142,16 @@ export default function OpenSource() {
                 </div>
               </Link>
 
-              <div className="p-4 md:p-6 h-auto lg:h-[17vh]">
+              <div className="py-3 md:p-6 h-auto lg:h-[17vh]">
                 <h3
                   ref={addTitleRef}
-                  className="text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white mb-2 text-center lg:text-left"
+                  className="text-xl lg:text-lg xl:text-xl font-bold text-white mb-2 text-center lg:text-left"
                 >
                   {project.title}
                 </h3>
                 <p
                   ref={addDescRef}
-                  className="text-[10px] md:text-xs lg:text-sm text-gray-300 leading-relaxed text-center lg:text-left"
+                  className="text-sm md:text-xs lg:text-sm text-gray-300 leading-relaxed text-center lg:text-left"
                 >
                   {project.description}
                 </p>
