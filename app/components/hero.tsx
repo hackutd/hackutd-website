@@ -15,16 +15,30 @@ export default function Hero() {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline();
+      const isMobile = window.innerWidth < 768;
 
-      // Spin Logo with fade
-      tl.to(logoRef.current, { scale: 1, rotation: 360, opacity: 1, duration: 1.2, ease: "back.out(1.7)", delay: 1 });
+      if (!isMobile) {
+        // Spin Logo with fade
+        tl.to(logoRef.current, { scale: 1, rotation: 360, opacity: 1, duration: 1.2, ease: "back.out(1.7)", delay: 1 });
 
-      // Slide from left, fade in, scale up
-      tl.fromTo(titleRef.current,
-        { x: -100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
-      "-=1.2");
-      
+        // Slide from left, fade in, scale up
+        tl.fromTo(titleRef.current,
+          { x: -100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+        "-=1.2");
+        
+      } else {
+        // Comet flies in
+        tl.fromTo(logoRef.current,
+          { x: 100, y: -100, opacity: 0, scale: 0.8 },
+          { x:0, y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "power3.out", delay: 1 },
+        );
+        tl.fromTo(titleRef.current,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+        "-=1.0");
+      }
+
       // Slide up and fade in
       tl.to(skylineRef.current, {
         y: 10,
