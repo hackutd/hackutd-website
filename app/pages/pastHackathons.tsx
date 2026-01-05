@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Hack2020 from '@/public/Hack2020.svg';
 import Hack2021 from '@/public/Hack2021.svg';
 import Hack2022 from '@/public/Hack2022.svg';
@@ -14,6 +14,7 @@ import { initPastHackathonsAnimations } from '../animations/pastHackathonsAnimat
 export default function PastHackathons() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const hackathons = [
     { 
@@ -57,6 +58,13 @@ export default function PastHackathons() {
     const cleanup = initPastHackathonsAnimations(sectionRef, trackRef);
     return cleanup;
   }, []);
+
+  // batch refresh after ALL images load
+  useEffect(() => {
+    if (imagesLoaded === hackathons.length) {
+      ScrollTrigger.refresh();
+    }
+  }, [imagesLoaded, hackathons.length]);
 
   return (
     <div className="bg-black">
@@ -655,9 +663,7 @@ export default function PastHackathons() {
                     alt={hackathon.alt}
                     priority={index === 0}
                     className="w-48 md:w-64 lg:w-[18rem] h-auto transition-transform duration-300 hover:scale-110 hover:drop-shadow-xl cursor-pointer"
-                    onLoadingComplete={() => {
-                      try { ScrollTrigger.refresh(); } catch {}
-                    }}
+                    onLoadingComplete={() => {setImagesLoaded(prev => prev + 1);}}
                   />
                 </Link>
                 <p className="mt-4 md:mt-6 text-base md:text-lg text-white font-semibold drop-shadow-lg">{hackathon.label}</p>
