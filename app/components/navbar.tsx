@@ -176,7 +176,7 @@ export function Navbar({
             <Button
               variant="outline"
               size="icon"
-              className="border-gray-700 bg-gray-900/60 text-gray-200 hover:bg-gray-800"
+              className="border-gray-200/30 bg-gray-900/20 text-gray-200 hover:bg-gray-800"
               onClick={() => setIsMobileNavOpen(true)}
             >
               <Menu className="h-5 w-5" />
@@ -194,7 +194,7 @@ export function Navbar({
               onClick={() => setIsMobileNavOpen(false)}
             />
             {/* Sheet */}
-            <div className="mt-20 fixed right-0 top-0 z-50 h-fit w-40 liquid-glass-header border-l border-gray-800 rounded-l-3xl shadow-lg flex flex-col">
+            <div className="mt-20 fixed right-0 top-0 z-50 h-fit w-40 liquid-glass-header !bg-black/30 border-l border-gray-800 rounded-l-3xl shadow-lg flex flex-col">
               {/* Nav Links */}
               <nav className="flex flex-col gap-1 mt-2 text-gray-200 items-end">
                 {links.map((link) => (
