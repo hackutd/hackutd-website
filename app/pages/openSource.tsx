@@ -79,7 +79,7 @@ export default function OpenSource() {
     }}
       className="relative isolate w-full min-h-screen bg-gradient-to-br from-[#D15CD8] via-[#F75371] via-[#DDDDDD] to-[#DDDDDD] py-8 md:py-16 px-4 md:px-8"
     >
-      <div className="max-w-7xl mt-50 md:mt-10 mx-auto">
+      <div className="max-w-7xl mt-50 md:mt-20 mx-auto">
         <div
           ref={headerRef}
           className="relative z-[999] text-center mb-8 md:mb-16 space-y-3 md:space-y-4"
