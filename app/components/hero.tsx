@@ -26,7 +26,7 @@ export default function Hero() {
           { x: -100, opacity: 0 },
           { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
         "-=1.2");
-        
+
       } else {
         // Comet flies in
         tl.fromTo(logoRef.current,
@@ -101,15 +101,15 @@ export default function Hero() {
             className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mb-2 md:mb-0 opacity-0" // initial opacity 0 for animation
           />
 
-          <div ref={titleRef} className="font-['CeraPro'] opacity-0"> {/* initial opacity 0 for animation */}
-            <p ref={preTitleRef} className="text-base md:text-md font-medium text-white ml-1">We are</p>
+          <div ref={titleRef} className="font-['CeraPro'] ml-6 md:ml-0 opacity-0"> {/* initial opacity 0 for animation */}
+            <p ref={preTitleRef} className="text-base md:text-md font-medium text-white md:ml-1">We are</p>
             <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[6rem] font-bold leading-none">
               <span className="text-white">Hack</span>
               <span className="bg-gradient-to-r from-pink-500 to-orange-400 text-transparent bg-clip-text">
                 UTD
               </span>
             </h1>
-            <p ref={subTitleRef} className="text-sm sm:text-base md:text-sm font-medium text-white mr-1 text-right">
+            <p ref={subTitleRef} className="text-sm sm:text-base md:text-sm font-medium text-white ml-1 md:ml-0 mr-1 text-left md:text-right">
               North America&apos;s Largest 24-hour Hackathon
             </p>
           </div>
