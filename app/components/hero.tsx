@@ -24,8 +24,8 @@ export default function Hero() {
 
         // Slide from left, fade in, scale up
         tl.fromTo(titleRef.current,
-          { x: -100, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+          { x: -600, clipPath: "inset(0% 0% 0% 100%)", opacity: 1},
+          { x: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power3.out" },
         "-=1.2");
 
       } else {
