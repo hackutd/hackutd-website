@@ -17,6 +17,16 @@ interface StarsProps {
   trailOpacity?: number;
 }
 
+function generateStar(resetZ = false): Star {
+  const spread = 1.5; // distributes stars wider beyond screen edges
+  return {
+    x: (Math.random() - 0.5) * window.innerWidth * spread,
+    y: (Math.random() - 0.5) * window.innerHeight * spread,
+    z: resetZ ? 1000 : Math.random() * 1000,
+    prevZ: resetZ ? 1000 : Math.random() * 1000,
+  };
+};
+
 export default function Stars({
   count = 3000,
   speed = 0.5,
@@ -43,12 +53,7 @@ export default function Stars({
     const initStars = () => {
       starsRef.current = [];
       for (let i = 0; i < count; i++) {
-        starsRef.current.push({
-          x: Math.random() * 1600 - 800,
-          y: Math.random() * 900 - 450,
-          z: Math.random() * 1000,
-          prevZ: Math.random() * 1000,
-        });
+        starsRef.current.push( generateStar() );
       }
     };
 
@@ -91,10 +96,7 @@ export default function Stars({
 
         // Wrap/reset if too close or too far
         if (star.z <= 0) {
-          star.x = Math.random() * 1600 - 800;
-          star.y = Math.random() * 900 - 450;
-          star.z = 1000;
-          star.prevZ = 1000;
+          ({ x: star.x, y: star.y, z: star.z, prevZ: star.prevZ } = generateStar(true));
         }
 
         // Clamp z to prevent negative radius errors
