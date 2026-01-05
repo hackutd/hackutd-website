@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import Stars from "./stars";
 import { gsap } from "gsap";
@@ -11,6 +11,7 @@ export default function Hero() {
   const preTitleRef = useRef<HTMLParagraphElement>(null);
   const subTitleRef = useRef<HTMLParagraphElement>(null);
   const skylineRef = useRef<HTMLDivElement>(null);
+  const [clickCount, setClickCount] = useState(0);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -70,14 +71,54 @@ export default function Hero() {
     return () => ctx.revert(); // Cleanup on unmount
   }, []);
 
+  const handleLogoClick = () => {
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+
+    if (newCount === 5) {
+      const ctx = gsap.context(() => {
+        gsap.killTweensOf(logoRef.current); // stop current floating animation
+        // teleportation animation timeline
+        const tl = gsap.timeline({
+            onComplete: () => {
+                setClickCount(0); 
+                // Resume the infinite floating
+                gsap.to(logoRef.current, {
+                    y: -10, duration: 2, ease: "power2.inOut", yoyo: true, repeat: -1
+                });
+            }
+        });
+        // Fly Down and Fade Out
+        tl.to(logoRef.current, {
+            x: -100,
+            y: 100,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.in"
+        });
+        // Teleport to Top Right
+        tl.set(logoRef.current, {
+            x: window.innerWidth / 2,
+            y: -window.innerWidth / 2,
+        });
+        // Fly back to center
+        tl.to(logoRef.current, {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            duration: 1.5,
+            ease: "power4.out"
+        });
+
+      }, comp);
+    }
+  };
+
   return (
     <section
       ref={comp}
       className="relative min-h-screen bg-gradient-to-b from-[#050014] via-[#04002A] to-[#050032] text-white overflow-x-hidden overflow-y-visible"
-      style={{
-        background: ``,
-      }}
-    >
+      >
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[120vw] h-[50vh] z-0">
         <div
           className="absolute inset-0 blur-3xl scale-150 opacity-70"
@@ -91,22 +132,24 @@ export default function Hero() {
       <Stars speed={1000} />
       <div className="absolute top-1/3 left-0 right-0 transform -translate-y-1/2 z-10">
         <div className="flex flex-col md:flex-row items-center justify-center space-x-4 px-4">
-          <Image 
-            ref={logoRef}
-            src="/logo.svg" 
-            alt="HackUTD Logo" 
-            width={120} 
-            height={120} 
-            className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mb-2 md:mb-0 opacity-0" // initial opacity 0 for animation
-          />
+          
+          <div onClick={handleLogoClick} className="cursor-pointer z-50">
+            <Image 
+                ref={logoRef}
+                src="/logo.svg" 
+                alt="HackUTD Logo" 
+                width={120} 
+                height={120} 
+                className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mb-2 md:mb-0 opacity-0 select-none" // added select-none to prevent highlighting
+                draggable={false}
+            />
+          </div>
 
           <div ref={titleRef} className="font-['CeraPro'] ml-6 md:ml-0 opacity-0"> {/* initial opacity 0 for animation */}
             <p ref={preTitleRef} className="text-base md:text-md font-medium text-white md:ml-1">We are</p>
             <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[6rem] font-bold leading-none">
               <span className="text-white">Hack</span>
-              <span className="bg-gradient-to-r from-pink-500 to-orange-400 text-transparent bg-clip-text">
-                UTD
-              </span>
+              <span className="bg-gradient-to-r from-pink-500 to-orange-400 text-transparent bg-clip-text">UTD</span>
             </h1>
             <p ref={subTitleRef} className="text-sm sm:text-base md:text-sm font-medium text-white ml-1 md:ml-0 mr-1 text-left md:text-right">
               North America&apos;s Largest 24-hour Hackathon
