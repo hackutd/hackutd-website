@@ -56,37 +56,6 @@ function Button({
   );
 }
 
-function MobileSheet({
-  children,
-  trigger,
-}: {
-  children: React.ReactNode;
-  trigger: React.ReactNode;
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <>
-      <div onClick={() => setIsOpen(true)}>{trigger}</div>
-
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 z-50 bg-black/0"
-            onClick={() => setIsOpen(false)}
-          />
-
-          {/* Sheet */}
-          <div className="mt-20 fixed right-0 top-0 z-50 h-fit w-40 liquid-glass-header border-l border-gray-800 rounded-l-3xl shadow-lg flex flex-col">
-            {children}
-          </div>
-        </>
-      )}
-    </>
-  );
-}
-
 export interface NavLink {
   href: string;
   label: string;
@@ -122,6 +91,7 @@ export function Navbar({
   logoHeight = 20,
   containerMaxWidth = "max-w-4xl",
 }: NavbarProps) {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 p-4 font-['CeraPro']">
       <div className={`container mx-auto ${containerMaxWidth}`}>
@@ -182,6 +152,7 @@ export function Navbar({
               </Link>
             </div>
         </div>
+        
         {/* Mobile Navbar */}
         <div className="md:hidden flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
           {/* Brand Logo */}
@@ -202,18 +173,28 @@ export function Navbar({
             </span>
           </Link>
           <div className="md:hidden">
-            <MobileSheet
-              trigger={
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="border-gray-700 bg-gray-900/ text-gray-200 hover:bg-gray-800"
-                >
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              }
+            <Button
+              variant="outline"
+              size="icon"
+              className="border-gray-700 bg-gray-900/60 text-gray-200 hover:bg-gray-800"
+              onClick={() => setIsMobileNavOpen(true)}
             >
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Sheet */}
+        {isMobileNavOpen && (
+          <>
+            {/* Backdrop to catch clicks*/}
+            <div
+              className="fixed inset-0 z-50 bg-black/0"
+              onClick={() => setIsMobileNavOpen(false)}
+            />
+            {/* Sheet */}
+            <div className="mt-20 fixed right-0 top-0 z-50 h-fit w-40 liquid-glass-header border-l border-gray-800 rounded-l-3xl shadow-lg flex flex-col">
               {/* Nav Links */}
               <nav className="flex flex-col gap-1 mt-2 text-gray-200 items-end">
                 {links.map((link) => (
@@ -231,11 +212,9 @@ export function Navbar({
                   </Link>
                 ))}
               </nav>
-
-              {/* CTA Button removed from mobile sheet */}
-            </MobileSheet>
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </header>
   );
