@@ -58,14 +58,13 @@ export default function Hero() {
       "-=0.6");
 
       // Continuous floating effect starting after a delay
-      gsap.to(logoRef.current, {
+      tl.to(logoRef.current, {
         y: -10,
         duration: 2,
         ease: "power2.inOut",
         yoyo: true,
-        repeat: -1,
-        delay: 5 
-      });
+        repeat: -1
+      }, "+=0.5");
     }, comp); // scope the selector to this component
 
     return () => ctx.revert(); // Cleanup on unmount
