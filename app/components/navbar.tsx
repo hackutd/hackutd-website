@@ -183,7 +183,7 @@ export function Navbar({
             </div>
         </div>
         {/* Mobile Navbar */}
-        <div className="md:hidden flex h-14 items-center justify-between px-6 bg-black rounded-full">
+        <div className="md:hidden flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-1.5">
             {logoSrc && (
@@ -207,7 +207,7 @@ export function Navbar({
                 <Button
                   variant="outline"
                   size="icon"
-                  className="border-gray-700 bg-gray-900/80 text-gray-200 hover:bg-gray-800"
+                  className="border-gray-700 bg-gray-900/ text-gray-200 hover:bg-gray-800"
                 >
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Open menu</span>
